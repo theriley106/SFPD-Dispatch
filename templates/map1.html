@@ -40,7 +40,7 @@ var geoJson = [
     type: 'Feature',
     "geometry": { "type": "Point", "coordinates": [{{ data.longitude }}, {{ data.latitude }}]},
     "properties": {
-        "marker-color": "#ff8888",
+        "marker-color": "{{ data.mapColor }}",
         "city": "{{ data.address }}",
     }
 },
