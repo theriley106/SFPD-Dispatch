@@ -2,6 +2,7 @@ import csv
 DATASET_FILE = "datasets/sfpd_dispatch_data_subset.csv"
 # This is the location where the SFPD dataset is stored
 
+listOfTypes = []
 def readDataset():
 	# This will convert the dataset into a format the the front end will use
 	dataset = []
@@ -24,6 +25,33 @@ def readDataset():
 	return dataset
 	# Returns an array of python dictionaries
 
+def getColor(incident):
+	colorInfo = {}
+	# Red: #f2391d
+	# Yellow: #f9fc49
+	# Gray: #b7b2b2
+	# Blue: #6e8dea
+	colorInfo["Elevator / Escalator Rescue"] = "#f9fc49"
+	colorInfo["Medical Incident"] = "#f9fc49"
+	# Requires Ambulance
+	colorInfo["Structure Fire"] = "#f2391d"
+	colorInfo["Outside Fire"] = "#f2391d"
+	colorInfo["Electrical Hazard"] = "#f2391d"
+	colorInfo["Vehicle Fire"] = "#f2391d"
+	colorInfo["Fuel Spill"] = "#f2391d"
+	colorInfo["Water Rescue"] = "#f2391d"
+	colorInfo["Smoke Investigation (Outside)"] = "#f2391d"
+	colorInfo["Train / Rail Incident"] = "#f2391d"
+	colorInfo["Gas Leak (Natural and LP Gases)"] = "#f2391d"
+	colorInfo["Odor (Strange / Unknown)"] = "#f2391d"
+	colorInfo["HazMat"] = "#f2391d"
+	# Requires Fire Service
+	colorInfo["Citizen Assist / Service Call"] = "#6e8dea"
+	colorInfo["Alarms"] = "#6e8dea"
+	colorInfo["Other"] = "#6e8dea"
+	colorInfo["Traffic Collision"] = "#6e8dea"
+	# These instances require police vehicles
+	return colorInfo[incident]
 
 def csvToList(csvFile):
 	# This will return a list of rows in the csv file
@@ -31,3 +59,8 @@ def csvToList(csvFile):
 		reader = csv.reader(f)
 		return list(reader)
 
+for var in readDataset():
+	listOfTypes.append(var['call_type'])
+
+for var in list(set(listOfTypes)):
+	print var
