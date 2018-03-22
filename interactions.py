@@ -20,6 +20,7 @@ def readDataset():
 			# Coverts each line in the CSV into JSON
 			tempInfo[datasetSchema[i]] = val[i]
 			# ie: dataset['call_number'] = 12312312321
+		tempInfo["mapColor"] = getColor(tempInfo["call_type"])
 		dataset.append(tempInfo)
 		# Adds the python dict to the dataset array
 	return dataset
@@ -58,9 +59,3 @@ def csvToList(csvFile):
 	with open(csvFile, 'rb') as f:
 		reader = csv.reader(f)
 		return list(reader)
-
-for var in readDataset():
-	listOfTypes.append(var['call_type'])
-
-for var in list(set(listOfTypes)):
-	print var
