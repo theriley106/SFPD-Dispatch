@@ -20,13 +20,25 @@ def readDataset():
 			# Coverts each line in the CSV into JSON
 			tempInfo[datasetSchema[i]] = val[i]
 			# ie: dataset['call_number'] = 12312312321
-		tempInfo["mapColor"] = getColor(tempInfo["call_type"])
+		tempInfo["mapColor"] = getPriorityColor(tempInfo["priority"])
 		dataset.append(tempInfo)
 		# Adds the python dict to the dataset array
 	return dataset
 	# Returns an array of python dictionaries
 
-def getColor(incident):
+def getPriorityColor(priority):
+	# Red: #f2391d
+	# Yellow: #f9fc49
+	# Gray: #b7b2b2
+	# Blue: #6e8dea
+	# Green: #5ee5ad
+	try:
+		return ["#5ee5ad", "#6e8dea", "#f2391d"][int(priority)-1]
+	except Exception as exp:
+		return "#b7b2b2"
+
+
+def getTypeColor(incident):
 	colorInfo = {}
 	# Red: #f2391d
 	# Yellow: #f9fc49
