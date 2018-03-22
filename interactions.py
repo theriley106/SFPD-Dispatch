@@ -32,8 +32,8 @@ def getColor(incident):
 	# Yellow: #f9fc49
 	# Gray: #b7b2b2
 	# Blue: #6e8dea
-	colorInfo["Elevator / Escalator Rescue"] = "#f9fc49"
-	colorInfo["Medical Incident"] = "#f9fc49"
+	# Green: #5ee5ad
+	colorInfo["Medical Incident"] = "#5ee5ad"
 	# Requires Ambulance
 	colorInfo["Structure Fire"] = "#f2391d"
 	colorInfo["Outside Fire"] = "#f2391d"
@@ -46,6 +46,7 @@ def getColor(incident):
 	colorInfo["Gas Leak (Natural and LP Gases)"] = "#f2391d"
 	colorInfo["Odor (Strange / Unknown)"] = "#f2391d"
 	colorInfo["HazMat"] = "#f2391d"
+	colorInfo["Elevator / Escalator Rescue"] = "#f2391d"
 	# Requires Fire Service
 	colorInfo["Citizen Assist / Service Call"] = "#6e8dea"
 	colorInfo["Alarms"] = "#6e8dea"
