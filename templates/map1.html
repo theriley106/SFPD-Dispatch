@@ -34,16 +34,16 @@ var myLayer = L.mapbox.featureLayer().addTo(map);
 var geoJson = [
 
 
-{% for data in datasets %}
+{% for data in dataset %}
 
 {
     type: 'Feature',
-    "geometry": { "type": "Point", "coordinates": [{{ data.Lat }}, {{ data.Long }}]},
+    "geometry": { "type": "Point", "coordinates": [{{ data.longitude }}, {{ data.latitude }}]},
     "properties": {
-        "image": "{{ data.Pic }}",
+        "image": "",
         "url": "https://mlh.io/seasons/na-2017/events",
         "marker-color": "#ff8888",
-        "city": "{{ data.Title }}",
+        "city": "{{ data.address }}",
     }
 },
 

@@ -6,7 +6,7 @@ app = Flask(__name__, static_url_path="", static_folder="static")
 
 @app.route('/', methods=['GET'])
 def index():
-	return "<h1>This works</h1>"
+	return render_template("map1.html", dataset=interactions.readDataset()[:500])
 
 @app.route('/dataset', methods=['GET'])
 def dataset():
