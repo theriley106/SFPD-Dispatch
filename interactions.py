@@ -1,8 +1,23 @@
 import csv
+from haversine import haversine
+
 DATASET_FILE = "datasets/sfpd_dispatch_data_subset.csv"
 # This is the location where the SFPD dataset is stored
 
 listOfTypes = []
+
+def returnBetween(point, radius):
+	dataset = readDataset()
+	# Reads the dataset
+	for var in dataset:
+		# Goes through all values in the dataset
+		if not checkInRadius((float(var["latitude"]), float(var["longitude"])), point, radius):
+			# Checks to see if the value is within the radius
+			dataset.remove(var)
+			# Removes the value
+	return dataset
+	# Returns a list of python dictionaries
+
 def readDataset():
 	# This will convert the dataset into a format the the front end will use
 	dataset = []
@@ -72,3 +87,7 @@ def csvToList(csvFile):
 	with open(csvFile, 'rb') as f:
 		reader = csv.reader(f)
 		return list(reader)
+
+def checkInRadius(point1, point2, radius):
+	# This will return if a point is within a certain radius
+	return (haversine(point1, point2, miles=True) < radius)
