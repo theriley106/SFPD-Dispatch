@@ -243,12 +243,19 @@ def extractLocationFromFile(fileName):
 		# Returns Python dictionary
 
 def returnLatLngTuple(pythonDict):
+	# Converts the python dict created by extractLocationFromFile() to tuple
 	try:
+		# Try-Except to catch any issues
 		latitude = pythonDict["Latitude"]
+		# Latitude is a string
 		longitude = pythonDict["Longitude"]
+		# Longitude is a string
 		return (float(latitude), float(longitude))
+		# Returns them as a tuple of floats
 	except:
+		# Means there was an issue with the dict
 		raise Exception("returnLatLngTuple() failed - python dictionary is not in the correct format")
+		# More detailed error than before
 
 def checkPreviousSearch(point, radius):
 	'''
@@ -264,7 +271,6 @@ def checkPreviousSearch(point, radius):
 			# Means the filename is in the correct {lat}-{lng}-{radius}.json format
 			if returnLatLngTuple(fileInfo) == point and float(radius) == float(fileInfo["Radius"]):
 				# This means the params match a previous dataset
-				print("Previous done")
 				return file
 				# String containing file
 
