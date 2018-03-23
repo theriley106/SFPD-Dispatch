@@ -6,6 +6,7 @@ from geopy.geocoders import GoogleV3
 # This is for converting address to long lat
 import glob
 # This is used to returns lists of files ending in a certain extension
+from math import radians, cos, sin, asin, sqrt
 
 '''
 Values from MAIN_DATASET_FILE:
@@ -56,7 +57,7 @@ UMICH_DATASET_FILE = DATASETS_FOLDER + "umichDataset.csv"
 
 listOfTypes = []
 
-def readDataset():
+def readDataset(householdIncome=True):
 	# This will convert the dataset into a format the the front end will use
 	dataset = []
 	# Ideally this should be  a list of JSON/python dicts for the jinja template
@@ -77,7 +78,7 @@ def readDataset():
 			# This messes up the frontend when priority is not an int
 			tempInfo["priority"] = 4
 			# Sets it to 4, which is basically "Unknown"
-		tempInfo["MeanHousehold"] = returnHousholdIncome(tempInfo["zipcode_of_incident"])
+		#tempInfo["MeanHousehold"] = returnHousholdIncome(tempInfo["zipcode_of_incident"])
 		# Ideally this would be a value IN THE dataset, but I don't want to modify the dataset from mindsumo
 		tempInfo["mapColor"] = getPriorityColor(tempInfo["priority"])
 		# This defines the pin color on the map
@@ -85,6 +86,9 @@ def readDataset():
 		# Adds the python dict to the dataset array
 	return dataset
 	# Returns an array of python dictionaries
+
+def addHouseholdIncome(dataset):
+
 
 def getPriorityColor(priority):
 	# Red: #f2391d
@@ -135,16 +139,26 @@ def csvToList(csvFile):
 
 def checkInRadius(point1, point2, radius):
 	# This will return if a point is within a certain radius
-	return (haversine(point1, point2, miles=True) < radius)
+	a = point1[0] - point2[0]
+	b = point1[1] - point2[1]
+	c = sqrt(a * a  +  b * b)
+	return (c < radius)
 
 def returnHousholdIncome(zipCode):
-	# Returns mean household income for a zip code
-	for row in csvToList(UMICH_DATASET_FILE):
-		# Goes through all lines in the umich dataset
-		if str(zipCode) in str(row):
-			# This means the zipcode is in the row
-			return int(float(str(row[1]).replace(",", '')))
-			# Returns mean household income for the zipcode as an integer
+	# Returns mean household income and population for a zip code
+	householdInfo = {}
+	for row in csvToList(UMICH_DATASET_FILE)[1:]:
+		# Goes through all lines in the umich dataset, except for line #1
+		zipCode = row[0]
+		# ie: 54666
+		meanIncome = row[1]
+		# ie: 104969
+		populationSize = row[2]
+		# ie: 14225
+		householdInfo[zipCode] = {"Population": populationSize, "Income": meanIncome}
+		# Python dictionary with all values being integers
+	return householdInfo
+	# Returns as dictionary
 
 def addressToCoord(address):
 	# Returns lat long for an address
@@ -175,10 +189,11 @@ def incidentsNearAddress(address, radius):
 	return incidentsNearLatLng((lat, lng), radius)
 	# Returns incidents near that lat long
 
-def checkPreviousSearch(point, radius):
+#def checkPreviousSearch(point, radius):
 	'''
 	Since incidentsNearLatLng() is extremely time consuming, the searches are saved
 	as CSV, and this list of CSVs is checked upon each call to incidentsNearLatLng()
 	to reduce the speed of incidents being returned
 	'''
 
+print len(incidentsNearAddress("101 Post Street San Francisco, CA 94108", 2))
