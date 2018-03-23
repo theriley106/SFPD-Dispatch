@@ -298,11 +298,23 @@ def returnIncidentsByParam(parameter, equalsValue):
 	# Return type is a List of dict values
 
 def returnListOfParam(incidentList, param):
-	# Input: List of python dicts
+	# Input: List of python dicts, string containing a dictionary key
 	# Output: list of values
 	# Ie: param = "zipcode_of_incident"
 	# would return a list of values matching incident["zipcode_of_incident"]
-
+	returnValues = []
+	# This will be the list of incidents that are returned to the user
+	for incident in incidentList:
+		try:
+			# Try -> Except to catch invalid parameter
+			returnValues.append(incident[param])
+			# Appends value to the list of data that is returned
+		except:
+			# This means the parameter is not in the incident dict
+			raise Exception("Parameter in returnListOfParam() is not valid")
+			# More detailed exception
+	return returnValues
+	# Return type is a List
 
 print len(returnIncidentsByParam("zipcode_of_incident", 94108))
 
