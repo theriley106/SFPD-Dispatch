@@ -363,7 +363,7 @@ def calculateResponseTime(incident):
 		return (callReceived - callReceived)
 		# This means the response time is 0, which is impossible so the value will be skipped
 
-def sortIncidentList(incidentList, param, reverse=False):
+def sortIncidentList(incidentList, param, reverse=True):
 	try:
 		# Try -> Except to catch nonexistant parameters
 		return sorted(incidentList, key=itemgetter(param), reverse=reverse)
