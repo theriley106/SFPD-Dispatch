@@ -1,5 +1,6 @@
 import csv
 from haversine import haversine
+from geopy.geocoders import GoogleV3
 
 '''
 Values from MAIN_DATASET_FILE:
@@ -152,5 +153,12 @@ def returnHousholdIncome(zipCode):
 			return int(float(str(row[1]).replace(",", '')))
 			# Returns mean household income for the zipcode as an integer
 
-
+def addressToCoord(address):
+	# Returns lat long for an address
+	geolocator = GoogleV3(api_key='AIzaSyDBZre20-q9hSY0BFXTqmiZr5-orJSuwr0')
+	# ^ Yes, I know this isn't a good idea :P
+	coords = geolocator.geocode(address)
+	# Coords is a class that contains a ton of info about the address
+	return (coords.latitude, coords.longitude)
+	# Returns lat long as a float
 
