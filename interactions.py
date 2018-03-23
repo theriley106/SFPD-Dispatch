@@ -195,14 +195,12 @@ def incidentsNearAddress(address, radius):
 		# This checks to see if this search query has already been run
 		if previousSearch != None:
 			# This means the dataset has already been created
-			return readDataset(previousSearch)
+			return readJsonDataset(previousSearch)
 			# Returns dataset without doing a ton of processing
 	incidentList = incidentsNearLatLng((lat, lng), radius)
 	# Returns incidents near that lat long
 	if REDUCE_PROCESSING_POWER == True:
 		# This will save the dataset locally for future searches
-
-
 
 def saveIncidentList(incidentList, point, radius):
 
