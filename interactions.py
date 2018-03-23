@@ -53,6 +53,8 @@ MAIN_DATASET_FILE = "{}/sfpd_dispatch_data_subset.csv".format(DATASETS_DIRECTORY
 UMICH_DATASET_FILE = "{}/umichDataset.csv".format(DATASETS_DIRECTORY)
 # Data is from https://www.psc.isr.umich.edu/dis/census/Features/tract2zip/
 # University of Michigan mean household income dataset
+REDUCE_PROCESSING_POWER = True
+# This enables various ways of reducing processing power
 
 listOfTypes = []
 
@@ -176,6 +178,7 @@ def incidentsNearLatLng(point, radius):
 	# Returns a list of python dictionaries
 
 def incidentsNearAddress(address, radius):
+	checkPreviousSearch(address, radius)
 	# Returns all instances that take place within radius of an address
 	lat, lng = addressToCoord(address)
 	# Returns latitude and longitude for an address
@@ -199,6 +202,13 @@ def extractLocationFromFile(fileName):
 		return {"Latitude": lat, "Longitude": lng, "Radius": radius, "Filename": fileName}
 		# Returns Python dictionary
 
+def returnLatLngTuple(pythonDict):
+	try:
+		latitude = pythonDict["Latitude"]
+		longitude = pythonDict["Longitude"]
+		return (latitude, longitude)
+	except:
+		raise Exception("returnLatLngTuple() failed - python dictionary is not in the correct format")
 
 def checkPreviousSearch(point, radius):
 	'''
@@ -209,7 +219,8 @@ def checkPreviousSearch(point, radius):
 	for file in glob.glob("{}/*.csv".format(DATASETS_DIRECTORY)):
 		fileInfo = extractLocationFromFile(file)
 		if fileInfo != None:
-			if
+			if returnLatLngTuple(fileInfo) == point and radius == fileInfo["Radius"]:
+				print("This has already been completed")
 
 #print len(incidentsNearAddress("101 Post Street San Francisco, CA 94108", 2))
 checkPreviousSearch(1, 1)
