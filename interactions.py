@@ -6,7 +6,8 @@ from geopy.geocoders import GoogleV3
 # This is for converting address to long lat
 import glob
 # This is used to returns lists of files ending in a certain extension
-
+import json
+# This is used to read datasets
 '''
 Values from MAIN_DATASET_FILE:
 call_number
@@ -58,11 +59,11 @@ REDUCE_PROCESSING_POWER = True
 
 listOfTypes = []
 
-def readDataset(householdIncome=True):
+def readDataset(csvFile=MAIN_DATASET_FILE, householdIncome=True):
 	# This will convert the dataset into a format the the front end will use
 	dataset = []
 	# Ideally this should be  a list of JSON/python dicts for the jinja template
-	datasetList = csvToList(MAIN_DATASET_FILE)
+	datasetList = csvToList(csvFile)
 	# This is the dataset in list format
 	datasetSchema = datasetList[0]
 	# "call_number", "unit_id", etc.
@@ -178,18 +179,33 @@ def incidentsNearLatLng(point, radius):
 	# Returns a list of python dictionaries
 
 def incidentsNearAddress(address, radius):
-	checkPreviousSearch(address, radius)
 	# Returns all instances that take place within radius of an address
 	lat, lng = addressToCoord(address)
 	# Returns latitude and longitude for an address
-	return incidentsNearLatLng((lat, lng), radius)
+	if REDUCE_PROCESSING_POWER == True:
+		# This means the constant is set to True
+		previousSearch = checkPreviousSearch((lat, lng), radius)
+		# This checks to see if this search query has already been run
+		if previousSearch != None:
+			# This means the dataset has already been created
+			return readDataset(previousSearch)
+			# Returns dataset without doing a ton of processing
+	incidentList = incidentsNearLatLng((lat, lng), radius)
 	# Returns incidents near that lat long
+	if REDUCE_PROCESSING_POWER == True:
+		# This will save the dataset locally for future searches
+
+
+
+
+def saveIncidentList(incidentList, point, radius):
+
 
 def extractLocationFromFile(fileName):
 	# This extract long, lat, and radius from a file name
 	fileName = fileName.partition("{}/".format(DATASETS_DIRECTORY))[2]
 	# This only grabs the actual filename - removing directory info
-	fileName = fileName.replace(".csv", "")
+	fileName = fileName.replace(".json", "")
 	# This will remove .csv only if it's present
 	if fileName.count("-") != 3:
 		# This checks to see if the format indicates it contains lat lng radius
@@ -216,7 +232,7 @@ def checkPreviousSearch(point, radius):
 	as CSV, and this list of CSVs is checked upon each call to incidentsNearLatLng()
 	to reduce the speed of incidents being returned
 	'''
-	for file in glob.glob("{}/*.csv".format(DATASETS_DIRECTORY)):
+	for file in glob.glob("{}/*.json".format(DATASETS_DIRECTORY)):
 		fileInfo = extractLocationFromFile(file)
 		if fileInfo != None:
 			if returnLatLngTuple(fileInfo) == point and radius == fileInfo["Radius"]:
