@@ -237,10 +237,15 @@ def checkPreviousSearch(point, radius):
 	to reduce the speed of incidents being returned
 	'''
 	for file in glob.glob("{}/*.json".format(DATASETS_DIRECTORY)):
+		# Goes through all files in DATASETS_DIRECTORY ending in .json
 		fileInfo = extractLocationFromFile(file)
+		# Tries to extract lat, lng, radius from file
 		if fileInfo != None:
+			# Means the filename is in the correct {lat}-{lng}-{radius}.json format
 			if returnLatLngTuple(fileInfo) == point and radius == fileInfo["Radius"]:
+				# This means the params match a previous dataset
 				return file
+				# String containing file
 
 #print len(incidentsNearAddress("101 Post Street San Francisco, CA 94108", 2))
 checkPreviousSearch(1, 1)
