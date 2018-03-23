@@ -136,6 +136,12 @@ def csvToList(csvFile):
 	with open(csvFile, 'rb') as f:
 		reader = csv.reader(f)
 		return list(reader)
+		# Returns as list, which == rows in the csv
+
+def readJsonDataset(jsonFile):
+	# Reads a json dataset
+	return json.load(open(jsonFile))
+	# Reads the json file and returns it as a python object
 
 def checkInRadius(point1, point2, radius):
 	# This will return if a point is within a certain radius
@@ -195,7 +201,6 @@ def incidentsNearAddress(address, radius):
 	# Returns incidents near that lat long
 	if REDUCE_PROCESSING_POWER == True:
 		# This will save the dataset locally for future searches
-
 
 
 
