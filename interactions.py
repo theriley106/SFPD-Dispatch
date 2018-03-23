@@ -237,7 +237,7 @@ def extractLocationFromFile(fileName):
 		# It will return None if it doesn't
 	else:
 		# This means it does follow the {lat}-{lng}-{radius}.json format
-		lat, lng, radius = fileInfo.split("_")
+		lat, lng, radius = fileInfo.partition("PS_")[2].split("_")
 		# Creates 3 files
 		return {"Latitude": lat, "Longitude": lng, "Radius": radius, "Filename": fileName}
 		# Returns Python dictionary
@@ -246,7 +246,7 @@ def returnLatLngTuple(pythonDict):
 	try:
 		latitude = pythonDict["Latitude"]
 		longitude = pythonDict["Longitude"]
-		return (latitude, longitude)
+		return (float(latitude), float(longitude))
 	except:
 		raise Exception("returnLatLngTuple() failed - python dictionary is not in the correct format")
 
@@ -262,7 +262,7 @@ def checkPreviousSearch(point, radius):
 		# Tries to extract lat, lng, radius from file
 		if fileInfo != None:
 			# Means the filename is in the correct {lat}-{lng}-{radius}.json format
-			if returnLatLngTuple(fileInfo) == point and radius == fileInfo["Radius"]:
+			if returnLatLngTuple(fileInfo) == point and float(radius) == float(fileInfo["Radius"]):
 				# This means the params match a previous dataset
 				print("Previous done")
 				return file
