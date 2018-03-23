@@ -27,6 +27,6 @@ def findAverageResponseTimeByZipCode():
 	print zipCodes
 	for zipC in zipCodes:
 		incidentList = returnIncidentsByParam("zipcode_of_incident", zipC)
-		a = returnListOfParam(incidentList, "priority")
-		print("{} - {}".format(zipC, averageValue(a)))
+		a = returnListOfParam(incidentList, "responseTime")
+		print("{} - {}".format(zipC, averageValue(a, forceSkip=True)))
 findAverageResponseTimeByZipCode()
