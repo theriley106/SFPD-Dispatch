@@ -44,11 +44,9 @@
   <br><br>
   <div id="custom-search-input">
       <div class="input-group col-md-12" id="locationField">
-      <datalist id="browsers">
-        </option></datalist>
-          <input type="text" id="autocomplete" name="address" class="form-control input-lg flipthis-highlight" placeholder="Address" onFocus="geolocate()">
+          <input type="text" id="autocomplete" name="address" class="form-control input-lg flipthis-highlight" placeholder="Address">
           <span class="input-group-btn">
-              <button class="btn btn-info btn-lg" onclick="moveToAddress();" value="Submit">
+              <button class="btn btn-info btn-lg" onclick="moveToAddress();">
                   <i class="glyphicon glyphicon-search"></i>
               </button>
           </span>
@@ -67,14 +65,6 @@
 // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
 var placeSearch, autocomplete;
-var componentForm = {
-street_number: 'short_name',
-route: 'long_name',
-locality: 'long_name',
-administrative_area_level_1: 'short_name',
-country: 'long_name',
-postal_code: 'short_name'
-};
 
 function initAutocomplete() {
 // Create the autocomplete object, restricting the search to geographical
@@ -85,33 +75,21 @@ autocomplete = new google.maps.places.Autocomplete(
 
 // When the user selects an address from the dropdown, populate the address
 // fields in the form.
-autocomplete.addListener('place_changed', fillInAddress);
+autocomplete.addListener('place_changed', moveToAddress);
 }
-
-function fillInAddress() {
-// Get the place details from the autocomplete object.
-var place = autocomplete.getPlace();
-
-for (var component in componentForm) {
-document.getElementById(component).value = '';
-document.getElementById(component).disabled = false;
-}
-// Get each component of the address from the place details
-// and fill the corresponding field on the form.
-for (var i = 0; i < place.address_components.length; i++) {
-var addressType = place.address_components[i].types[0];
-if (componentForm[addressType]) {
-  var val = place.address_components[i][componentForm[addressType]];
-  document.getElementById(addressType).value = val;
-}
-}
-}
-
 
 function moveToAddress() {
-  var address = document.getElementById('autocomplete').value;
-  console.log(address);
+  // var address = document.getElementById('autocomplete').value;
+  // console.log(address);
+  // Converting string to json so we can interact with it
+  var place = autocomplete.getPlace();
+  console.log(place.geometry.location.toJSON());
+
 }
+
+
+
+
 
 
 </script>
