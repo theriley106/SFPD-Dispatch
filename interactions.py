@@ -58,7 +58,7 @@ UMICH_DATASET_FILE = "{}/umichDataset.csv".format(DATASETS_DIRECTORY)
 # University of Michigan mean household income dataset
 REDUCE_PROCESSING_POWER = True
 # This enables various ways of reducing processing power
-DATASET_FILENAME_STRUCTURE = "{0}-{1}-{2}.json"
+DATASET_FILENAME_STRUCTURE = DATASETS_DIRECTORY + "/PS_{0}_{1}_{2}.json"
 # This is for the datasets that are created by the program
 # intended as: DATASET_FILENAME_STRUCTURE.format(latitude, longitude, radius)
 
@@ -193,40 +193,51 @@ def incidentsNearAddress(address, radius):
 	# Returns all instances that take place within radius of an address
 	lat, lng = addressToCoord(address)
 	# Returns latitude and longitude for an address
+	point = (lat, lng)
+	# Point is just a tuple sent to functions using lat lng
+	print(point)
 	if REDUCE_PROCESSING_POWER == True:
 		# This means the constant is set to True
-		previousSearch = checkPreviousSearch((lat, lng), radius)
+		previousSearch = checkPreviousSearch(point, radius)
 		# This checks to see if this search query has already been run
 		if previousSearch != None:
 			# This means the dataset has already been created
 			return readJsonDataset(previousSearch)
 			# Returns dataset without doing a ton of processing
-	incidentList = incidentsNearLatLng((lat, lng), radius)
+	incidentList = incidentsNearLatLng(point, radius)
 	# Returns incidents near that lat long
 	if REDUCE_PROCESSING_POWER == True:
 		# This will save the dataset locally for future searches
+		saveIncidentList(incidentList, point, radius)
+		# Saves incidentList as {latitude}-{longitude}-{radius}.json
+	return incidentList
 
 def saveIncidentList(incidentList, point, radius):
+	# Saves the list of json files containing incidents within a certain radius
 	latitude = point[0]
 	# This sets the latitude as first elem in the point tuple
 	longitude = point[1]
 	# This sets the longitude as second elem in the point tuple
 	fileName = DATASET_FILENAME_STRUCTURE.format(latitude, longitude, radius)
-
+	# Sets filename it's going to save the incident list as
+	with open(fileName, 'w') as csvObject:
+		# Will overwrite if the file already exists
+		json.dump(incidentList, csvObject)
+		# Writes incident list to fileName, a json file
 
 def extractLocationFromFile(fileName):
 	# This extract long, lat, and radius from a file name
-	fileName = fileName.partition("{}/".format(DATASETS_DIRECTORY))[2]
+	fileInfo = fileName.partition("{}/".format(DATASETS_DIRECTORY))[2]
 	# This only grabs the actual filename - removing directory info
-	fileName = fileName.replace(".json", "")
+	fileInfo = fileName.replace(".json", "")
 	# This will remove .json only if it's present
-	if fileName.count("-") != 3:
+	if fileInfo.count("_") != 3:
 		# This checks to see if the format indicates it contains lat lng radius
 		return None
 		# It will return None if it doesn't
 	else:
 		# This means it does follow the {lat}-{lng}-{radius}.json format
-		lat, lng, radius = fileName.split("-")
+		lat, lng, radius = fileInfo.split("_")
 		# Creates 3 files
 		return {"Latitude": lat, "Longitude": lng, "Radius": radius, "Filename": fileName}
 		# Returns Python dictionary
@@ -245,7 +256,7 @@ def checkPreviousSearch(point, radius):
 	as CSV, and this list of CSVs is checked upon each call to incidentsNearLatLng()
 	to reduce the speed of incidents being returned
 	'''
-	for file in glob.glob("{}/*.json".format(DATASETS_DIRECTORY)):
+	for file in glob.glob("{}/PS_*.json".format(DATASETS_DIRECTORY)):
 		# Goes through all files in DATASETS_DIRECTORY ending in .json
 		fileInfo = extractLocationFromFile(file)
 		# Tries to extract lat, lng, radius from file
@@ -253,8 +264,9 @@ def checkPreviousSearch(point, radius):
 			# Means the filename is in the correct {lat}-{lng}-{radius}.json format
 			if returnLatLngTuple(fileInfo) == point and radius == fileInfo["Radius"]:
 				# This means the params match a previous dataset
+				print("Previous done")
 				return file
 				# String containing file
 
-#print len(incidentsNearAddress("101 Post Street San Francisco, CA 94108", 2))
-checkPreviousSearch(1, 1)
+print len(incidentsNearAddress("101 Post Street San Francisco, CA 94108", 2))
+
