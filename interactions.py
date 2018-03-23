@@ -12,6 +12,8 @@ import re
 # Regex is used for extracting values from the dataset strings
 from datetime import datetime
 # This is used to calculate time differences
+from operator import itemgetter
+# This is for sorting the list of instances
 
 '''
 Values from MAIN_DATASET_FILE:
@@ -358,8 +360,18 @@ def calculateResponseTime(incident):
 		# onScence - callReceived is the total time it took to respond
 	except:
 		# This means the call likely is missing a timestamp
-		return 0
+		return (callReceived - callReceived)
 		# This means the response time is 0, which is impossible so the value will be skipped
+
+def sortIncidentList(incidentList, param, reverse=False):
+	try:
+		# Try -> Except to catch nonexistant parameters
+		return sorted(incidentList, key=itemgetter(param), reverse=reverse)
+	except Exception as exp:
+		# This means the parameter doesn't exist
+		print exp
+		raise Exception("Error in sortIncidentList() - parameter does not exist in incident list")
+		# More detailed exception
 
 
 
@@ -368,4 +380,5 @@ if __name__ == '__main__':
 	incidentList = returnIncidentsByParam("zipcode_of_incident", 94108)
 	# Returns all incidents taking place in 94108
 	#returnListOfParam(incidentList, ""
-	print calculateResponseTime(incidentList[0])
+	for var in sortIncidentList(incidentList, "responseTime")[:10]:
+		print var["responseTime"]
