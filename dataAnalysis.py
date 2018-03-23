@@ -22,11 +22,14 @@ def findMostFrequentLocation(count=10):
 	return sorted(info, key=itemgetter("Count"), reverse=True)[:count]
 
 def findAverageResponseTimeByZipCode():
+	listOfResponseTimes = []
 	incidentList = readDataset()
 	zipCodes = returnListOfParam(incidentList, "zipcode_of_incident", duplicates=False)
-	print zipCodes
 	for zipC in zipCodes:
 		incidentList = returnIncidentsByParam("zipcode_of_incident", zipC)
 		a = returnListOfParam(incidentList, "responseTime")
-		print("{} - {}".format(zipC, averageValue(a, forceSkip=True)))
-findAverageResponseTimeByZipCode()
+		info = {"ZipCode": zipC, "ResponseTime": averageValue(a, forceSkip=True), "Calls": len(a)}
+		listOfResponseTimes.append(info)
+	return listOfResponseTimes
+
+print findAverageResponseTimeByZipCode()
