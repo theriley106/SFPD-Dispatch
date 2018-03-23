@@ -188,6 +188,8 @@ def checkPreviousSearch(point, radius):
 	as CSV, and this list of CSVs is checked upon each call to incidentsNearLatLng()
 	to reduce the speed of incidents being returned
 	'''
-	for file in glob.glob("{}*.txt")
+	for file in glob.glob("{}/*.csv".format(DATASETS_DIRECTORY)):
+		print file
 
-print len(incidentsNearAddress("101 Post Street San Francisco, CA 94108", 2))
+#print len(incidentsNearAddress("101 Post Street San Francisco, CA 94108", 2))
+checkPreviousSearch(1, 1)
