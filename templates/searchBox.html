@@ -50,7 +50,7 @@
       <div class="input-group col-md-12" id="locationField">
           <input type="text" id="autocomplete" name="address" class="form-control input-lg flipthis-highlight" placeholder="Address">
           <span class="input-group-btn">
-              <button class="btn btn-info btn-lg" onclick="moveToAddress();">
+              <button class="btn btn-info btn-lg" onclick="openModel();">
                   <i class="glyphicon glyphicon-search"></i>
               </button>
           </span>
@@ -88,7 +88,7 @@ function moveToAddress() {
   var place = autocomplete.getPlace();
   var coords = place.geometry.location.toJSON();
   map.setView(new L.LatLng(coords.lat, coords.lng), 17);
-
+  openModel();
 
 }
 
