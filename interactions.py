@@ -240,7 +240,7 @@ def checkPreviousSearch(point, radius):
 		fileInfo = extractLocationFromFile(file)
 		if fileInfo != None:
 			if returnLatLngTuple(fileInfo) == point and radius == fileInfo["Radius"]:
-				print("This has already been completed")
+				return file
 
 #print len(incidentsNearAddress("101 Post Street San Francisco, CA 94108", 2))
 checkPreviousSearch(1, 1)
