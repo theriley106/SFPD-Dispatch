@@ -1,6 +1,9 @@
 import csv
+# This is for interactions with the datasets
 from haversine import haversine
+# This is the calculate long lat that's within a certain radius
 from geopy.geocoders import GoogleV3
+# This is for converting address to long lat
 
 '''
 Values from MAIN_DATASET_FILE:
