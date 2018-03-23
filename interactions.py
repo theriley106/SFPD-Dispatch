@@ -4,6 +4,8 @@ from haversine import haversine
 # This is the calculate long lat that's within a certain radius
 from geopy.geocoders import GoogleV3
 # This is for converting address to long lat
+import glob
+# This is used to returns lists of files ending in a certain extension
 
 '''
 Values from MAIN_DATASET_FILE:
@@ -44,10 +46,11 @@ row_id
 latitude
 longitude
 '''
-
-MAIN_DATASET_FILE = "datasets/sfpd_dispatch_data_subset.csv"
+DATASETS_FOLDER = "datasets/"
+# This is the folder than contains all of the Datasets
+MAIN_DATASET_FILE = DATASETS_FOLDER + "sfpd_dispatch_data_subset.csv"
 # This is the location where the SFPD dataset is stored
-UMICH_DATASET_FILE = "datasets/umichDataset.csv"
+UMICH_DATASET_FILE = DATASETS_FOLDER + "umichDataset.csv"
 # Data is from https://www.psc.isr.umich.edu/dis/census/Features/tract2zip/
 # University of Michigan mean household income dataset
 
@@ -171,3 +174,11 @@ def incidentsNearAddress(address, radius):
 	# Returns latitude and longitude for an address
 	return incidentsNearLatLng((lat, lng), radius)
 	# Returns incidents near that lat long
+
+def checkPreviousSearch(point, radius):
+	'''
+	Since incidentsNearLatLng() is extremely time consuming, the searches are saved
+	as CSV, and this list of CSVs is checked upon each call to incidentsNearLatLng()
+	to reduce the speed of incidents being returned
+	'''
+
