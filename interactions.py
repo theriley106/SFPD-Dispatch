@@ -4,6 +4,9 @@ from haversine import haversine
 MAIN_DATASET_FILE = "datasets/sfpd_dispatch_data_subset.csv"
 # This is the location where the SFPD dataset is stored
 UMICH_DATASET_FILE = "datasets/umichDataset.csv"
+# Data is from https://www.psc.isr.umich.edu/dis/census/Features/tract2zip/
+# University of Michigan mean household income dataset
+
 listOfTypes = []
 
 def returnBetween(point, radius):
@@ -95,13 +98,11 @@ def checkInRadius(point1, point2, radius):
 	return (haversine(point1, point2, miles=True) < radius)
 
 def returnHousholdIncome(zipCode):
-	# Data is from https://www.psc.isr.umich.edu/dis/census/Features/tract2zip/
-	# University of Michigan mean household income dataset
+	for row in csvToList(UMICH_DATASET_FILE):
+		# Goes through all lines in the umich dataset
+		if str(zipCode) in str(row):
+			# This means the zipcode is in the row
+			return int(float(str(row[1]).replace(",", '')))
+			# Returns mean household income for the zipcode as an integer
 
-def Status(zip):
-	with open('Economics.csv', 'rb') as f:
-		reader = csv.reader(f)
-		lis = list(reader)
-	for e in lis:
-		if str(zip) in str(e):
-			return int(float(str(e[1]).replace(",", '')))
+
