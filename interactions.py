@@ -392,3 +392,7 @@ if __name__ == '__main__':
 	b = returnListOfParam(incidentList, param, duplicates=False)
 	print len(a)
 	print len(b)
+	info = []
+	for var in b:
+		info.append({"Location": var, "Count": len(re.findall(var, str(a)))})
+	print sorted(info, key=itemgetter("Count"), reverse=True)[:10]
