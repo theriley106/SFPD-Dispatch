@@ -10,6 +10,8 @@ import json
 # This is used to read datasets
 import re
 # Regex is used for extracting values from the dataset strings
+from datetime import datetime
+# This is used to calculate time differences
 
 '''
 Values from MAIN_DATASET_FILE:
@@ -332,9 +334,18 @@ def averageValue(listOfValues):
 	# Returns value as a float
 
 def extractTimeVal(timeStamp):
-	# Returns the raw time value from a timestamp string
-	return re.findall('.+\s(.+)\s', timeStamp)[0]
-	# Returns the timestamp as a string
+	# Returns the datetime value from a timestamp string
+	timeVal = re.findall('(.+)\.', timeStamp)[0]
+	# timeVal is the raw timestamp as a string
+	timeFormat = "%Y-%m-%d %H:%M:%S"
+	# This is the format of the timestamps in the dataset
+	return datetime.strptime(timeVal, timeFormat)
+	# Datetime values can be added to, subtracted from, etc
+
+def calculateResponseTime(incident):
+	# Input: incident dictionary
+	# Output: float containing seconds
+
 
 # returnListOfParam((returnIncidentsByParam("zipcode_of_incident", 94108)), "available_timestamp")
 if __name__ == '__main__':
