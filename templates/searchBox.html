@@ -83,7 +83,9 @@ function moveToAddress() {
   // console.log(address);
   // Converting string to json so we can interact with it
   var place = autocomplete.getPlace();
-  console.log(place.geometry.location.toJSON());
+  var coords = place.geometry.location.toJSON();
+  map.panTo(new L.LatLng(coords.lat, coords.lng));
+
 
 }
 
