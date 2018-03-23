@@ -46,11 +46,11 @@ row_id
 latitude
 longitude
 '''
-DATASETS_FOLDER = "datasets/"
+DATASETS_DIRECTORY = "DATASETS"
 # This is the folder than contains all of the Datasets
-MAIN_DATASET_FILE = DATASETS_FOLDER + "sfpd_dispatch_data_subset.csv"
+MAIN_DATASET_FILE = "{}/sfpd_dispatch_data_subset.csv".format(DATASETS_DIRECTORY)
 # This is the location where the SFPD dataset is stored
-UMICH_DATASET_FILE = DATASETS_FOLDER + "umichDataset.csv"
+UMICH_DATASET_FILE = "{}/umichDataset.csv".format(DATASETS_DIRECTORY)
 # Data is from https://www.psc.isr.umich.edu/dis/census/Features/tract2zip/
 # University of Michigan mean household income dataset
 
@@ -182,11 +182,12 @@ def incidentsNearAddress(address, radius):
 	return incidentsNearLatLng((lat, lng), radius)
 	# Returns incidents near that lat long
 
-#def checkPreviousSearch(point, radius):
+def checkPreviousSearch(point, radius):
 	'''
 	Since incidentsNearLatLng() is extremely time consuming, the searches are saved
 	as CSV, and this list of CSVs is checked upon each call to incidentsNearLatLng()
 	to reduce the speed of incidents being returned
 	'''
+	for file in glob.glob("{}*.txt")
 
 print len(incidentsNearAddress("101 Post Street San Francisco, CA 94108", 2))
