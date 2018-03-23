@@ -385,5 +385,10 @@ if __name__ == '__main__':
 	incidentList = readDataset()
 	# Returns all incidents taking place in 94108
 	#returnListOfParam(incidentList, ""
-	for var in sortIncidentList(incidentList, "responseTime")[:10]:
-		print var["responseTime"]
+	#for var in sortIncidentList(incidentList, "responseTime")[:10]:
+	#	print var["responseTime"]
+	param = "location"
+	a = returnListOfParam(incidentList, param, duplicates=True)
+	b = returnListOfParam(incidentList, param, duplicates=False)
+	print len(a)
+	print len(b)
