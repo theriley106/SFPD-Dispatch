@@ -305,7 +305,7 @@ def returnIncidentsByParam(parameter, equalsValue):
 	return returnValues
 	# Return type is a List of dict values
 
-def returnListOfParam(incidentList, param):
+def returnListOfParam(incidentList, param, duplicates=True):
 	# Input: List of python dicts, string containing a dictionary key
 	# Output: list of values
 	# Ie: param = "zipcode_of_incident"
@@ -321,8 +321,13 @@ def returnListOfParam(incidentList, param):
 			# This means the parameter is not in the incident dict
 			raise Exception("Parameter in returnListOfParam() is not valid")
 			# More detailed exception
-	return returnValues
-	# Return type is a List
+	if duplicates == True:
+		return returnValues
+		# Return type is a List
+	else:
+		# This means that you only want unique param values
+		return list(set(returnValues))
+		# Set only contains unique, converting back to list removed all non-unique vals
 
 def averageValue(listOfValues):
 	# Returns an average for all values in a list
