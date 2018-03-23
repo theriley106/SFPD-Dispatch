@@ -20,3 +20,13 @@ def findMostFrequentLocation(count=10):
 	for var in returnListOfParam(incidentList, "location", duplicates=False):
 		info.append({"Location": var, "Count": len(re.findall(var, str(fullDataSet)))})
 	return sorted(info, key=itemgetter("Count"), reverse=True)[:count]
+
+def findAverageResponseTimeByZipCode():
+	incidentList = readDataset()
+	zipCodes = returnListOfParam(incidentList, "zipcode_of_incident", duplicates=False)
+	print zipCodes
+	for zipC in zipCodes:
+		incidentList = returnIncidentsByParam("zipcode_of_incident", zipC)
+		a = returnListOfParam(incidentList, "priority")
+		print("{} - {}".format(zipC, averageValue(a)))
+findAverageResponseTimeByZipCode()

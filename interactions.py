@@ -329,16 +329,33 @@ def returnListOfParam(incidentList, param, duplicates=True):
 		return list(set(returnValues))
 		# Set only contains unique, converting back to list removed all non-unique vals
 
-def averageValue(listOfValues):
+def averageValue(listOfValues, forceSkip=False):
 	# Returns an average for all values in a list
-	try:
-		# Tries to convert the list into floats
-		listOfValues = [float(value) for value in listOfValues]
-		# Converts the entire list into a list of float values
-	except:
-		# This means it's probably a list of strings or dicts
-		raise Exception("Error in averageValue() - elements not numerical values")
-		# More detailed exception
+	if forceSkip == True:
+		valList = []
+		# Val list will hold float values from listOfValues
+		for val in listOfValues:
+			# Iterates through all values
+			try:
+				# Tries to convert the list into floats
+				valList.append(float(val))
+				# Appends the float val to valList
+			except:
+				# This means it wasn't able to be converted to a float
+				pass
+				# Ignore the error
+		listOfValues = valList
+		# Assigns the valList to the new listOfValues
+	else:
+		# This means forceSkip was set to False, the default val
+		try:
+			# Tries to convert the list into floats
+			listOfValues = [float(value) for value in listOfValues]
+			# Converts the entire list into a list of float values
+		except:
+			# This means it's probably a list of strings or dicts
+			raise Exception("Error in averageValue() - elements not numerical values")
+			# More detailed exception
 	return (sum(listOfValues) / float(len(listOfValues)))
 	# Sum / length is the average
 	# Returns value as a float
