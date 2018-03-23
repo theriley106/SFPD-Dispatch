@@ -391,7 +391,6 @@ def sortIncidentList(incidentList, param, reverse=True):
 		return sorted(incidentList, key=itemgetter(param), reverse=reverse)
 	except Exception as exp:
 		# This means the parameter doesn't exist
-		print exp
 		raise Exception("Error in sortIncidentList() - parameter does not exist in incident list")
 		# More detailed exception
 
