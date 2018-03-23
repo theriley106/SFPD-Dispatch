@@ -182,6 +182,24 @@ def incidentsNearAddress(address, radius):
 	return incidentsNearLatLng((lat, lng), radius)
 	# Returns incidents near that lat long
 
+def extractLocationFromFile(fileName):
+	# This extract long, lat, and radius from a file name
+	fileName = fileName.partition("{}/".format(DATASETS_DIRECTORY))[2]
+	# This only grabs the actual filename - removing directory info
+	fileName = fileName.replace(".csv", "")
+	# This will remove .csv only if it's present
+	if fileName.count("-") != 3:
+		# This checks to see if the format indicates it contains lat lng radius
+		return None
+		# It will return None if it doesn't
+	else:
+		# This means it does follow the {lat}-{lng}-{radius}.csv format
+		lat, lng, radius = fileName.split("-")
+		# Creates 3 files
+		return {"Latitude": lat, "Longitude": lng, "Radius": radius}
+		# Returns Python dictionary
+
+
 def checkPreviousSearch(point, radius):
 	'''
 	Since incidentsNearLatLng() is extremely time consuming, the searches are saved
