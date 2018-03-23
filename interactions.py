@@ -356,11 +356,11 @@ def calculateResponseTime(incident):
 		# Extracts the datetime value from the "received_timestamp" string
 		onScene = extractTimeVal(incident["on_scene_timestamp"])
 		# Extracts the datetime value from the "on_scene_timestamp" string
-		return (onScene - callReceived)
+		return (onScene - callReceived).total_seconds()
 		# onScence - callReceived is the total time it took to respond
 	except:
 		# This means the call likely is missing a timestamp
-		return (callReceived - callReceived)
+		return (callReceived - callReceived).total_seconds()
 		# This means the response time is 0, which is impossible so the value will be skipped
 
 def sortIncidentList(incidentList, param, reverse=True):
