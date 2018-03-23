@@ -85,6 +85,7 @@ def readDataset():
 		tempInfo["MeanHousehold"] = returnHousholdIncome(tempInfo["zipcode_of_incident"])
 		# Ideally this would be a value IN THE dataset, but I don't want to modify the dataset from mindsumo
 		tempInfo["mapColor"] = getPriorityColor(tempInfo["priority"])
+		# This defines the pin color on the map
 		dataset.append(tempInfo)
 		# Adds the python dict to the dataset array
 	return dataset
