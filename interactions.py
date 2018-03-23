@@ -53,19 +53,6 @@ UMICH_DATASET_FILE = "datasets/umichDataset.csv"
 
 listOfTypes = []
 
-def returnBetween(point, radius):
-	# Returns a list of instances within radius of a long lat point
-	dataset = readDataset()
-	# Reads the dataset
-	for var in dataset:
-		# Goes through all values in the dataset
-		if not checkInRadius((float(var["latitude"]), float(var["longitude"])), point, radius):
-			# Checks to see if the value is within the radius
-			dataset.remove(var)
-			# Removes the value
-	return dataset
-	# Returns a list of python dictionaries
-
 def readDataset():
 	# This will convert the dataset into a format the the front end will use
 	dataset = []
@@ -165,3 +152,22 @@ def addressToCoord(address):
 	return (coords.latitude, coords.longitude)
 	# Returns lat long as a float
 
+def incidentsNearLatLng(point, radius):
+	# Returns a list of instances within radius of a long lat point
+	dataset = readDataset()
+	# Reads the dataset
+	for var in dataset:
+		# Goes through all values in the dataset
+		if not checkInRadius((float(var["latitude"]), float(var["longitude"])), point, radius):
+			# Checks to see if the value is within the radius
+			dataset.remove(var)
+			# Removes the value
+	return dataset
+	# Returns a list of python dictionaries
+
+def incidentsNearAddress(address, radius):
+	# Returns all instances that take place within radius of an address
+	lat, lng = addressToCoord(address)
+	# Returns latitude and longitude for an address
+	return incidentsNearLatLng((lat, lng), radius)
+	# Returns incidents near that lat long
