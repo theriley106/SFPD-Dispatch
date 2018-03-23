@@ -291,8 +291,8 @@ def returnIncidentsByParam(parameter, equalsValue):
 			raise Exception("Parameter in returnIncidentsByParam() is not valid")
 			# More detailed exception
 	return returnValues
-	# Type: List of dict values
+	# Return type is a List of dict values
 
 
-print len(incidentsNearAddress("101 Post Street San Francisco, CA 94108", 2))
+print len(returnIncidentsByParam("zipcode_of_incident", 94108))
 
