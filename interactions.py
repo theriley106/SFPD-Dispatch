@@ -8,6 +8,8 @@ import glob
 # This is used to returns lists of files ending in a certain extension
 import json
 # This is used to read datasets
+import re
+# Regex is used for extracting values from the dataset strings
 
 '''
 Values from MAIN_DATASET_FILE:
@@ -329,6 +331,13 @@ def averageValue(listOfValues):
 	# Sum / length is the average
 	# Returns value as a float
 
+def extractTimeVal(timeStamp):
+	# Returns the raw time value from a timestamp string
+	return re.findall('.+\s(.+)\s', timeStamp)[0]
+	# Returns the timestamp as a string
 
 # returnListOfParam((returnIncidentsByParam("zipcode_of_incident", 94108)), "available_timestamp")
-
+if __name__ == '__main__':
+	incidentList = returnIncidentsByParam("zipcode_of_incident", 94108)
+	# Returns all incidents taking place in 94108
+	returnListOfParam(incidentList, ""
