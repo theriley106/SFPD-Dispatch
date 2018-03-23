@@ -274,5 +274,25 @@ def checkPreviousSearch(point, radius):
 				return file
 				# String containing file
 
+def returnIncidentsByParam(parameter, equalsValue):
+	# Parameter is equal to dict key, equalsValue is the value
+	returnValues = []
+	# This will be the list of incidents that are returned to the user
+	for incident in readDataset():
+		# Loops through all incidents
+		try:
+			# Try -> Except to catch invalid parameter
+			if str(incident[parameter]) == str(equalsValue):
+				# Converting both to strings, ignoring data type
+				returnValues.append(incident)
+				# Appends incident value to the list of data that is returned
+		except:
+			# This means the parameter is not in the incident dict
+			raise Exception("Parameter in returnIncidentsByParam() is not valid")
+			# More detailed exception
+	return returnValues
+	# Type: List of dict values
+
+
 print len(incidentsNearAddress("101 Post Street San Francisco, CA 94108", 2))
 
