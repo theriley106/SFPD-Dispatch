@@ -102,23 +102,5 @@ if (componentForm[addressType]) {
 }
 }
 }
-
-// Bias the autocomplete object to the user's geographical location,
-// as supplied by the browser's 'navigator.geolocation' object.
-function geolocate() {
-if (navigator.geolocation) {
-navigator.geolocation.getCurrentPosition(function(position) {
-  var geolocation = {
-    lat: position.coords.latitude,
-    lng: position.coords.longitude
-  };
-  var circle = new google.maps.Circle({
-    center: geolocation,
-    radius: position.coords.accuracy
-  });
-  autocomplete.setBounds(circle.getBounds());
-});
-}
-}
 </script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChcmCaga6Qc3x3mIUuJf7MZIw-SrHaDx4&libraries=places&callback=initAutocomplete" async defer></script>
