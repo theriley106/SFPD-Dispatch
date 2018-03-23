@@ -377,7 +377,7 @@ def sortIncidentList(incidentList, param, reverse=True):
 
 # returnListOfParam((returnIncidentsByParam("zipcode_of_incident", 94108)), "available_timestamp")
 if __name__ == '__main__':
-	incidentList = returnIncidentsByParam("zipcode_of_incident", 94108)
+	incidentList = readDataset()
 	# Returns all incidents taking place in 94108
 	#returnListOfParam(incidentList, ""
 	for var in sortIncidentList(incidentList, "responseTime")[:10]:

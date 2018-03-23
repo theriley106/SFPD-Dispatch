@@ -12,5 +12,16 @@ def index():
 def dataset():
 	return jsonify(interactions.readDataset())
 
+@app.route('/Resident', methods=['GET'])
+def resident():
+	return jsonify(interactions.readDataset())
+
+@app.route('/LawEnforcement', methods=['GET'])
+def lawEnforcement():
+	return jsonify(interactions.readDataset())
+@app.route('/Government', methods=['GET'])
+def government():
+	return jsonify(interactions.readDataset())
+
 if __name__ == "__main__":
 	app.run()
