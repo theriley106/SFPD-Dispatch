@@ -323,6 +323,7 @@ def returnListOfParam(incidentList, param):
 	# Return type is a List
 
 def averageValue(listOfValues):
+	# Returns an average for all values in a list
 	try:
 		# Tries to convert the list into floats
 		listOfValues = [float(value) for value in listOfValues]
@@ -347,12 +348,19 @@ def extractTimeVal(timeStamp):
 def calculateResponseTime(incident):
 	# Input: incident dictionary
 	# Output: float containing seconds
-	callReceived = extractTimeVal(incident["received_timestamp"])
-	# Extracts the datetime value from the "received_timestamp" string
-	onScene = extractTimeVal(incident["on_scene_timestamp"])
-	# Extracts the datetime value from the "on_scene_timestamp" string
-	return (onScene - callReceived)
-	# onScence - callReceived is the total time it took to respond
+	try:
+		# Try -> Except because some calls don't have timestamps
+		callReceived = extractTimeVal(incident["received_timestamp"])
+		# Extracts the datetime value from the "received_timestamp" string
+		onScene = extractTimeVal(incident["on_scene_timestamp"])
+		# Extracts the datetime value from the "on_scene_timestamp" string
+		return (onScene - callReceived)
+		# onScence - callReceived is the total time it took to respond
+	except:
+		# This means the call likely is missing a timestamp
+		return 0
+		# This means the response time is 0, which is impossible so the value will be skipped
+
 
 
 # returnListOfParam((returnIncidentsByParam("zipcode_of_incident", 94108)), "available_timestamp")
