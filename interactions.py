@@ -6,7 +6,6 @@ from geopy.geocoders import GoogleV3
 # This is for converting address to long lat
 import glob
 # This is used to returns lists of files ending in a certain extension
-from math import radians, cos, sin, asin, sqrt
 
 '''
 Values from MAIN_DATASET_FILE:
@@ -87,9 +86,6 @@ def readDataset(householdIncome=True):
 	return dataset
 	# Returns an array of python dictionaries
 
-def addHouseholdIncome(dataset):
-
-
 def getPriorityColor(priority):
 	# Red: #f2391d
 	# Yellow: #f9fc49
@@ -139,10 +135,7 @@ def csvToList(csvFile):
 
 def checkInRadius(point1, point2, radius):
 	# This will return if a point is within a certain radius
-	a = point1[0] - point2[0]
-	b = point1[1] - point2[1]
-	c = sqrt(a * a  +  b * b)
-	return (c < radius)
+	return (haversine(point1, point2, miles=True) < radius)
 
 def returnHousholdIncome(zipCode):
 	# Returns mean household income and population for a zip code
