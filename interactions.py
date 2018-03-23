@@ -50,6 +50,7 @@ UMICH_DATASET_FILE = "datasets/umichDataset.csv"
 listOfTypes = []
 
 def returnBetween(point, radius):
+	# Returns a list of instances within radius of a long lat point
 	dataset = readDataset()
 	# Reads the dataset
 	for var in dataset:
@@ -150,5 +151,6 @@ def returnHousholdIncome(zipCode):
 			# This means the zipcode is in the row
 			return int(float(str(row[1]).replace(",", '')))
 			# Returns mean household income for the zipcode as an integer
+
 
 
