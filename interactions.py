@@ -1,6 +1,46 @@
 import csv
 from haversine import haversine
 
+'''
+Values from CSV:
+call_number
+unit_id
+incident_number
+call_type
+call_date
+watch_date
+received_timestamp
+entry_timestamp
+dispatch_timestamp
+response_timestamp
+on_scene_timestamp
+transport_timestamp
+hospital_timestamp
+call_final_disposition
+available_timestamp
+address
+city
+zipcode_of_incident
+battalion
+station_area
+box
+original_priority
+priority
+final_priority
+als_unit
+call_type_group
+number_of_alarms
+unit_type
+unit_sequence_in_call_dispatch
+fire_prevention_district
+supervisor_district
+neighborhood_district
+location
+row_id
+latitude
+longitude
+'''
+
 MAIN_DATASET_FILE = "datasets/sfpd_dispatch_data_subset.csv"
 # This is the location where the SFPD dataset is stored
 UMICH_DATASET_FILE = "datasets/umichDataset.csv"
