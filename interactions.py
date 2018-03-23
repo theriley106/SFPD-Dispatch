@@ -93,6 +93,8 @@ def readDataset(csvFile=MAIN_DATASET_FILE, householdIncome=True):
 		# Ideally this would be a value IN THE dataset, but I don't want to modify the dataset from mindsumo
 		tempInfo["mapColor"] = getPriorityColor(tempInfo["priority"])
 		# This defines the pin color on the map
+		tempInfo["responseTime"] = calculateResponseTime(tempInfo)
+		# This is the total response time for the call
 		dataset.append(tempInfo)
 		# Adds the python dict to the dataset array
 	return dataset
@@ -349,7 +351,8 @@ def calculateResponseTime(incident):
 	# Extracts the datetime value from the "received_timestamp" string
 	onScene = extractTimeVal(incident["on_scene_timestamp"])
 	# Extracts the datetime value from the "on_scene_timestamp" string
-	return onScene - callReceived
+	return (onScene - callReceived)
+	# onScence - callReceived is the total time it took to respond
 
 
 # returnListOfParam((returnIncidentsByParam("zipcode_of_incident", 94108)), "available_timestamp")
