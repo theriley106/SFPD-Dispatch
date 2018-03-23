@@ -297,7 +297,11 @@ def returnIncidentsByParam(parameter, equalsValue):
 	return returnValues
 	# Return type is a List of dict values
 
-#def returnIncidentsByParam(
+def returnListOfParam(incidentList, param):
+	# Input: List of python dicts
+	# Output: list of values
+	# Ie: param = "zipcode_of_incident"
+	# would return a list of values matching incident["zipcode_of_incident"]
 
 
 print len(returnIncidentsByParam("zipcode_of_incident", 94108))
