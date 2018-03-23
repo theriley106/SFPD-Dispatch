@@ -2,7 +2,7 @@ import csv
 from haversine import haversine
 
 '''
-Values from CSV:
+Values from MAIN_DATASET_FILE:
 call_number
 unit_id
 incident_number
