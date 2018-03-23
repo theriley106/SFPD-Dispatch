@@ -196,7 +196,7 @@ def extractLocationFromFile(fileName):
 		# This means it does follow the {lat}-{lng}-{radius}.csv format
 		lat, lng, radius = fileName.split("-")
 		# Creates 3 files
-		return {"Latitude": lat, "Longitude": lng, "Radius": radius}
+		return {"Latitude": lat, "Longitude": lng, "Radius": radius, "Filename": fileName}
 		# Returns Python dictionary
 
 
@@ -207,7 +207,9 @@ def checkPreviousSearch(point, radius):
 	to reduce the speed of incidents being returned
 	'''
 	for file in glob.glob("{}/*.csv".format(DATASETS_DIRECTORY)):
-		print file
+		fileInfo = extractLocationFromFile(file)
+		if fileInfo != None:
+			if
 
 #print len(incidentsNearAddress("101 Post Street San Francisco, CA 94108", 2))
 checkPreviousSearch(1, 1)
