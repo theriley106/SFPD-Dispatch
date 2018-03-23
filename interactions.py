@@ -98,6 +98,7 @@ def checkInRadius(point1, point2, radius):
 	return (haversine(point1, point2, miles=True) < radius)
 
 def returnHousholdIncome(zipCode):
+	# Returns mean household income for a zip code
 	for row in csvToList(UMICH_DATASET_FILE):
 		# Goes through all lines in the umich dataset
 		if str(zipCode) in str(row):
