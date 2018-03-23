@@ -8,6 +8,7 @@ import glob
 # This is used to returns lists of files ending in a certain extension
 import json
 # This is used to read datasets
+
 '''
 Values from MAIN_DATASET_FILE:
 call_number
@@ -206,13 +207,13 @@ def extractLocationFromFile(fileName):
 	fileName = fileName.partition("{}/".format(DATASETS_DIRECTORY))[2]
 	# This only grabs the actual filename - removing directory info
 	fileName = fileName.replace(".json", "")
-	# This will remove .csv only if it's present
+	# This will remove .json only if it's present
 	if fileName.count("-") != 3:
 		# This checks to see if the format indicates it contains lat lng radius
 		return None
 		# It will return None if it doesn't
 	else:
-		# This means it does follow the {lat}-{lng}-{radius}.csv format
+		# This means it does follow the {lat}-{lng}-{radius}.json format
 		lat, lng, radius = fileName.split("-")
 		# Creates 3 files
 		return {"Latitude": lat, "Longitude": lng, "Radius": radius, "Filename": fileName}
