@@ -316,5 +316,19 @@ def returnListOfParam(incidentList, param):
 	return returnValues
 	# Return type is a List
 
+def averageValue(listOfValues):
+	try:
+		# Tries to convert the list into floats
+		listOfValues = [float(value) for value in listOfValues]
+		# Converts the entire list into a list of float values
+	except:
+		# This means it's probably a list of strings or dicts
+		raise Exception("Error in averageValue() - elements not numerical values")
+		# More detailed exception
+	return (sum(listOfValues) / float(len(listOfValues)))
+	# Sum / length is the average
+	# Returns value as a float
+
+
 # returnListOfParam((returnIncidentsByParam("zipcode_of_incident", 94108)), "available_timestamp")
 
