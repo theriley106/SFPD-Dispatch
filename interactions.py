@@ -316,5 +316,5 @@ def returnListOfParam(incidentList, param):
 	return returnValues
 	# Return type is a List
 
-print len(returnIncidentsByParam("zipcode_of_incident", 94108))
+# returnListOfParam((returnIncidentsByParam("zipcode_of_incident", 94108)), "available_timestamp")
 
