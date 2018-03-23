@@ -38,9 +38,7 @@
     font-size: 23px;
 }
 
-
 </style>
-<form action="{{url_for('searchAddress')}}" method="post" div class="container">
 <div class="row">
 <div class="col-md-6">
   <br><br>
@@ -50,12 +48,11 @@
         </option></datalist>
           <input type="text" id="autocomplete" name="address" class="form-control input-lg flipthis-highlight" placeholder="Address" onFocus="geolocate()">
           <span class="input-group-btn">
-              <button class="btn btn-info btn-lg" type="submit" value="Submit">
+              <button class="btn btn-info btn-lg" onclick="moveToAddress();" value="Submit">
                   <i class="glyphicon glyphicon-search"></i>
               </button>
           </span>
           </div>
-          </form>
       </div>
   </div>
 
@@ -99,7 +96,6 @@ for (var component in componentForm) {
 document.getElementById(component).value = '';
 document.getElementById(component).disabled = false;
 }
-
 // Get each component of the address from the place details
 // and fill the corresponding field on the form.
 for (var i = 0; i < place.address_components.length; i++) {
@@ -110,5 +106,13 @@ if (componentForm[addressType]) {
 }
 }
 }
+
+
+function moveToAddress() {
+  var address = document.getElementById('autocomplete').value;
+  console.log(address);
+}
+
+
 </script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChcmCaga6Qc3x3mIUuJf7MZIw-SrHaDx4&libraries=places&callback=initAutocomplete" async defer></script>
