@@ -345,10 +345,16 @@ def extractTimeVal(timeStamp):
 def calculateResponseTime(incident):
 	# Input: incident dictionary
 	# Output: float containing seconds
+	callReceived = extractTimeVal(incident["received_timestamp"])
+	# Extracts the datetime value from the "received_timestamp" string
+	onScene = extractTimeVal(incident["on_scene_timestamp"])
+	# Extracts the datetime value from the "on_scene_timestamp" string
+	return onScene - callReceived
 
 
 # returnListOfParam((returnIncidentsByParam("zipcode_of_incident", 94108)), "available_timestamp")
 if __name__ == '__main__':
 	incidentList = returnIncidentsByParam("zipcode_of_incident", 94108)
 	# Returns all incidents taking place in 94108
-	returnListOfParam(incidentList, ""
+	#returnListOfParam(incidentList, ""
+	print calculateResponseTime(incidentList[0])
