@@ -19,9 +19,15 @@ def resident():
 @app.route('/LawEnforcement', methods=['GET'])
 def lawEnforcement():
 	return jsonify(interactions.readDataset())
+
 @app.route('/Government', methods=['GET'])
 def government():
 	return jsonify(interactions.readDataset())
+
+@app.route('/searchAddress', methods=['POST'])
+def searchAddress():
+	address = request.form.get("address")
+	return ""
 
 if __name__ == "__main__":
 	app.run()
