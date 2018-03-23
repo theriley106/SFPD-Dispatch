@@ -276,6 +276,10 @@ def checkPreviousSearch(point, radius):
 
 def returnIncidentsByParam(parameter, equalsValue):
 	# Parameter is equal to dict key, equalsValue is the value
+	# Returns all instances where one dict value matches another dict value
+	# Ie: parameter = "zipcode_of_incident"
+	# equalsValue = "94108"
+	# Would return all incidents where incident["zipcode_of_incident"] == "94108"
 	returnValues = []
 	# This will be the list of incidents that are returned to the user
 	for incident in readDataset():
@@ -292,6 +296,8 @@ def returnIncidentsByParam(parameter, equalsValue):
 			# More detailed exception
 	return returnValues
 	# Return type is a List of dict values
+
+#def returnIncidentsByParam(
 
 
 print len(returnIncidentsByParam("zipcode_of_incident", 94108))
