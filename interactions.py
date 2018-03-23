@@ -48,6 +48,7 @@ row_id
 latitude
 longitude
 '''
+
 DATASETS_DIRECTORY = "DATASETS"
 # This is the folder than contains all of the Datasets
 MAIN_DATASET_FILE = "{}/sfpd_dispatch_data_subset.csv".format(DATASETS_DIRECTORY)
@@ -57,6 +58,9 @@ UMICH_DATASET_FILE = "{}/umichDataset.csv".format(DATASETS_DIRECTORY)
 # University of Michigan mean household income dataset
 REDUCE_PROCESSING_POWER = True
 # This enables various ways of reducing processing power
+DATASET_FILENAME_STRUCTURE = "{0}-{1}-{2}.json"
+# This is for the datasets that are created by the program
+# intended as: DATASET_FILENAME_STRUCTURE.format(latitude, longitude, radius)
 
 listOfTypes = []
 
@@ -203,6 +207,11 @@ def incidentsNearAddress(address, radius):
 		# This will save the dataset locally for future searches
 
 def saveIncidentList(incidentList, point, radius):
+	latitude = point[0]
+	# This sets the latitude as first elem in the point tuple
+	longitude = point[1]
+	# This sets the longitude as second elem in the point tuple
+	fileName = DATASET_FILENAME_STRUCTURE.format(latitude, longitude, radius)
 
 
 def extractLocationFromFile(fileName):
