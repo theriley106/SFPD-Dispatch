@@ -98,7 +98,7 @@ REDUCE_PROCESSING_POWER = True
 DATASET_FILENAME_STRUCTURE = DATASETS_DIRECTORY + "/PS_{0}_{1}_{2}.json"
 # This is for the datasets that are created by the program
 # intended as: DATASET_FILENAME_STRUCTURE.format(latitude, longitude, radius)
-RESPONSE_BY_ZIP_DATASET = "{}/response_by_zip.jsoon".format(DATASETS_DIRECTORY)
+RESPONSE_BY_ZIP_DATASET = "{}/response_by_zip.json".format(DATASETS_DIRECTORY)
 # JSON File containing police response time per zip
 # Code for creating this file can be found in dataAnalysis.py
 
@@ -456,11 +456,14 @@ def sortIncidentList(incidentList, param, reverse=True):
 
 def returnResponseByZip(zipCode):
 	# Returns that response time average for the zipcode
-	a = json.load(open("{}/"))
+	responseData = json.load(open(RESPONSE_BY_ZIP_DATASET))
+	# Converts the json file into a python dictionary
+	return responseData[str(zipCode)]
+	# This returns the float value containing the average response time
 
 # returnListOfParam((returnIncidentsByParam("zipcode_of_incident", 94108)), "available_timestamp")
 if __name__ == '__main__':
-	incidentList = readDataset()
+	'''incidentList = readDataset()
 	# Returns all incidents taking place in 94108
 	#returnListOfParam(incidentList, ""
 	#for var in sortIncidentList(incidentList, "responseTime")[:10]:
@@ -474,3 +477,5 @@ if __name__ == '__main__':
 	for var in b:
 		info.append({"Location": var, "Count": len(re.findall(var, str(a)))})
 	print sorted(info, key=itemgetter("Count"), reverse=True)[:10]
+'''
+	print returnResponseByZip("94130")
