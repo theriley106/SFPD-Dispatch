@@ -54,7 +54,13 @@ def getAverageCustom(incidentList, param):
 # Average Priority: 2.75377537754
 # getAverage("priority")
 
-incidentList = returnIncidentsByParam("priority", "2")
-print getAverageCustom(incidentList, "responeTime")
+# Average Response time for Priority 2: 701.353504274
+
+# Average Respone time for Priority 3: 323.708423326
+
+
+
+incidentList = returnIncidentsByParam("priority", "3")
+print getAverageCustom(incidentList, "responseTime")
 
 

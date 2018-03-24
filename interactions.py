@@ -89,8 +89,8 @@ def readDataset(csvFile=MAIN_DATASET_FILE, householdIncome=True):
 			# ie: dataset['call_number'] = 12312312321
 		if tempInfo["priority"] == "E":
 			# This messes up the frontend when priority is not an int
-			tempInfo["priority"] = 4
-			# Sets it to 4, which is basically "Unknown"
+			tempInfo["priority"] = 3
+			# Sets it to 3, which is basically "Emergency"
 		#tempInfo["MeanHousehold"] = returnHousholdIncome(tempInfo["zipcode_of_incident"])
 		# Ideally this would be a value IN THE dataset, but I don't want to modify the dataset from mindsumo
 		tempInfo["mapColor"] = getPriorityColor(tempInfo["priority"])
