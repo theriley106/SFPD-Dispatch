@@ -519,10 +519,16 @@ def returnIncidentsByTime(timestamp, parameter="received_timestamp", minRange=15
 	return returnValues
 	# Return type is a List of dict values
 
-def getAverageByTime(time, param, minRange=5, skipZero=False):
-
-	extractTimeVal()
-
+def ReturnIncidentByLocationAndTime(timestamp, point, param, minRange=30, radius=.3):
+	# Returns incidents during a time period within a certain radius
+	incidentList = incidentsNearLatLng(point, radius)
+	# Gets all instances near a certain long lat
+	incidentList = returnIncidentsByTime(timestamp, minRange=minRange, incidentList=incidentList)
+	# Filters down previosu incident list by time
+	listOfParam = returnListOfParam(incidentList, param)
+	# Returns the list of paramters
+	return averageValue(listOfParam, forceSkip=True, skipZero=False)
+	# Returns the average of those parameters
 
 # returnListOfParam((returnIncidentsByParam("zipcode_of_incident", 94108)), "available_timestamp")
 if __name__ == '__main__':
@@ -541,4 +547,5 @@ if __name__ == '__main__':
 		info.append({"Location": var, "Count": len(re.findall(var, str(a)))})
 	print sorted(info, key=itemgetter("Count"), reverse=True)[:10]'''
 	#print getAverageByLatLong((37.77444199483868, -122.5046792231959), "priority")
-	print len(returnIncidentsByTime("9:15"))
+	#print len(returnIncidentsByTime("9:15"))
+	print guessIncidentType("12:15", (37.77444199483868, -122.5046792231959), "responseTime")
