@@ -471,8 +471,8 @@ def ResponseByZipAsLod():
 		# Iterates through the values in the dictionary as a tuple containing key and value
 		listOfTimes.append({"Zip": key, "Response": val})
 		# Converts those tuples to a python dictionary and appends it to the list
-	return listOfTimes
-	# Returns the list of python dictionaries
+	return sorted(listOfTimes, key=itemgetter("Response"))
+	# Returns the list of sorted python dictionaries
 
 # returnListOfParam((returnIncidentsByParam("zipcode_of_incident", 94108)), "available_timestamp")
 if __name__ == '__main__':

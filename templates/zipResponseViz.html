@@ -47,7 +47,7 @@ Chart.defaults.global.defaultFontFamily = "Lato";
 Chart.defaults.global.defaultFontSize = 18;
 
 var densityData = {
-  label: 'SFPD Average Response Time (By Zip Code)',
+  label: 'Average Response Time (In Seconds)',
   data: [{% for info in responseTimeData %}
                 {{ info.Response }},
                 {% endfor %}],
