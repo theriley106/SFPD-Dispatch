@@ -384,6 +384,7 @@ def returnListOfParam(incidentList, param, duplicates=True):
 def averageValue(listOfValues, forceSkip=False, skipZero=False):
 	# Returns an average for all values in a list
 	if forceSkip == True:
+		# This means the default value has been changed to == True
 		valList = []
 		# Val list will hold float values from listOfValues
 		for val in listOfValues:
@@ -473,6 +474,16 @@ def ResponseByZipAsLod():
 		# Converts those tuples to a python dictionary and appends it to the list
 	return sorted(listOfTimes, key=itemgetter("Response"))
 	# Returns the list of sorted python dictionaries
+
+def getAverageByLatLong(point, param, radius=.3, skipZero=False):
+	# This returns the average of a certain param by lat long
+	# Radius is equal to .3, which is equal to nearby locations
+	incidentList = incidentsNearLatLng(point, radius)
+	# This gets all instances within a certain radius of long lat
+	valueList = returnListOfParam(incidentList, param)
+	# This is a raw list of values taken from that incident list
+	return averageValue(valueList, forceSkip=True, skipZero=skipZero)
+	# This returns a float value indicating the average of all values
 
 # returnListOfParam((returnIncidentsByParam("zipcode_of_incident", 94108)), "available_timestamp")
 if __name__ == '__main__':
