@@ -485,9 +485,48 @@ def getAverageByLatLong(point, param, radius=.3, skipZero=False):
 	return averageValue(valueList, forceSkip=True, skipZero=skipZero)
 	# This returns a float value indicating the average of all values
 
+def returnIncidentsByTime(timestamp, parameter="received_timestamp", minRange=15, incidentList=None, timeFormat="%H:%M"):
+	# Parameter is equal to dict key, equalsValue is the value
+	# Returns all instances where one dict value matches another dict value
+	# Ie: parameter = "received_timestamp"
+	# equalsValue = 2018-01-24 17:36:16.000000 UTC +- minRange
+	# Timestamp in the format 8:15, etc.
+	timeStamp = datetime.strptime(timestamp, timeFormat)
+	# Converts the timestamp string into a datetime object
+	returnValues = []
+	# This will be the list of incidents that are returned to the user
+	if incidentList == None:
+		# Means that the function wasn't called with a predefined list
+		incidentList = readDataset()
+		# Reads full incident list
+	for incident in incidentList:
+		# Loops through all incidents
+		try:
+			timeVal = extractTimeVal(str(incident[parameter]))
+			# timeVal is equal to a column containing time
+			dateTimeParam = (timeVal - timeStamp)
+			# Converts this difference into a datetime object
+			if dateTimeParam.seconds < (60*minRange):
+				# Seeing if the time difference is less than minRange
+				returnValues.append(incident)
+				# Appends incident value to the list of data that is returned
+		except Exception as exp:
+			# This means the parameter is not in the incident dict
+			print exp
+			# More detailed just in case exp is different
+			raise Exception("Parameter in returnIncidentsByParam() is not valid")
+			# More detailed exception
+	return returnValues
+	# Return type is a List of dict values
+
+def getAverageByTime(time, param, minRange=5, skipZero=False):
+
+	extractTimeVal()
+
+
 # returnListOfParam((returnIncidentsByParam("zipcode_of_incident", 94108)), "available_timestamp")
 if __name__ == '__main__':
-	incidentList = readDataset()
+	'''incidentList = readDataset()
 	# Returns all incidents taking place in 94108
 	#returnListOfParam(incidentList, ""
 	#for var in sortIncidentList(incidentList, "responseTime")[:10]:
@@ -500,4 +539,6 @@ if __name__ == '__main__':
 	info = []
 	for var in b:
 		info.append({"Location": var, "Count": len(re.findall(var, str(a)))})
-	print sorted(info, key=itemgetter("Count"), reverse=True)[:10]
+	print sorted(info, key=itemgetter("Count"), reverse=True)[:10]'''
+	#print getAverageByLatLong((37.77444199483868, -122.5046792231959), "priority")
+	print len(returnIncidentsByTime("9:15"))
