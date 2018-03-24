@@ -282,7 +282,7 @@ def checkPreviousSearch(point, radius):
 				return file
 				# String containing file
 
-def returnIncidentsByParam(parameter, equalsValue):
+def returnIncidentsByParam(parameter, equalsValue, incidentList=None):
 	# Parameter is equal to dict key, equalsValue is the value
 	# Returns all instances where one dict value matches another dict value
 	# Ie: parameter = "zipcode_of_incident"
@@ -290,7 +290,11 @@ def returnIncidentsByParam(parameter, equalsValue):
 	# Would return all incidents where incident["zipcode_of_incident"] == "94108"
 	returnValues = []
 	# This will be the list of incidents that are returned to the user
-	for incident in readDataset():
+	if incidentList == None:
+		# Means that the function wasn't called with a predefined list
+		incidentList = readDataset()
+		# Reads full incident list
+	for incident in incidentList:
 		# Loops through all incidents
 		try:
 			# Try -> Except to catch invalid parameter
