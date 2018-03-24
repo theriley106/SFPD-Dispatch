@@ -8,6 +8,9 @@ This is the code used to generate the data visualizations and analytics
 in the readme
 '''
 
+#class analysis(object):
+
+
 def findAmountOfUniqueLocations():
 	a = returnListOfParam(incidentList, param, duplicates=True)
 	b = returnListOfParam(incidentList, param, duplicates=False)
@@ -31,5 +34,9 @@ def findAverageResponseTimeByZipCode():
 		info = {"ZipCode": zipC, "ResponseTime": averageValue(a, forceSkip=True), "Calls": len(a)}
 		listOfResponseTimes.append(info)
 	return listOfResponseTimes
+
+def getAverage(param):
+	# Param has to be completely numerical
+
 
 print findAverageResponseTimeByZipCode()

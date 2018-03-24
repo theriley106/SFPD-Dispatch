@@ -89,6 +89,7 @@ function moveToAddress() {
   var coords = place.geometry.location.toJSON();
   map.setView(new L.LatLng(coords.lat, coords.lng), 17);
   document.getElementById("myModalLabel").innerHTML = 'ayyyy';
+  document.getElementById("model-body").innerHTML = "This works properly";
   openModel();
 
 }
