@@ -148,6 +148,12 @@ def getZipCodes():
 	# Returns all zip codes in the dataset
 	return ['94130', '94131', '94132', '94133', '94134', '94158', '94118', '94112', '94110', '94111', '94116', '94117', '94114', '94115', '94127', '94124', '94123', '94122', '94121', '94129', '94109', '94108', '94103', '94102', '94105', '94104', '94107']
 
+def returnParamByZip(zipCode, param):
+	# This will return a list of params filtered by zip code
+	incidentList = returnIncidentsByParam("zipcode_of_incident", zipCode)
+	# Creates an incident list containing incidents that took place in that zip code
+	return returnListOfParam(incidentList, param)
+	# Returns a list of all values taking place in that zip code
 
 def getTypeColor(incident):
 	colorInfo = {}
