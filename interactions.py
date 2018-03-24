@@ -55,6 +55,37 @@ latitude
 longitude
 '''
 
+'''
+Zip Codes:
+['94130',
+'94131',
+'94132',
+'94133',
+'94134',
+'94158',
+'94118',
+'94112',
+'94110',
+'94111',
+'94116',
+'94117',
+'94114',
+'94115',
+'94127',
+'94124',
+'94123',
+'94122',
+'94121',
+'94129',
+'94109',
+'94108',
+'94103',
+'94102',
+'94105',
+'94104',
+'94107']
+'''
+
 DATASETS_DIRECTORY = "DATASETS"
 # This is the folder than contains all of the Datasets
 MAIN_DATASET_FILE = "{}/sfpd_dispatch_data_subset.csv".format(DATASETS_DIRECTORY)
@@ -112,6 +143,10 @@ def getPriorityColor(priority):
 		return ["#5ee5ad", "#6e8dea", "#f2391d"][int(priority)-1]
 	except Exception as exp:
 		return "#b7b2b2"
+
+def getZipCodes():
+	# Returns all zip codes in the dataset
+	return ['94130', '94131', '94132', '94133', '94134', '94158', '94118', '94112', '94110', '94111', '94116', '94117', '94114', '94115', '94127', '94124', '94123', '94122', '94121', '94129', '94109', '94108', '94103', '94102', '94105', '94104', '94107']
 
 
 def getTypeColor(incident):

@@ -62,9 +62,4 @@ incidentList = returnIncidentsByParam("priority", "2")
 
 zipCodeList = returnListOfParam(readDataset(), "zipcode_of_incident", duplicates=False)
 
-
-
-
-print getAverageCustom(incidentList, "responseTime")
-
-
+print zipCodeList
