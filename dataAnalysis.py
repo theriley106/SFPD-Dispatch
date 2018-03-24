@@ -41,11 +41,20 @@ def getAverage(param):
 	incidentList = readDataset()
 	return averageValue(returnListOfParam(incidentList, param), forceSkip=True)
 
+def getAverageCustom(incidentList, param):
+	# Param has to be completely numerical
+	# Incident list can be custom
+	listVal = []
+	return averageValue(returnListOfParam(incidentList, param), forceSkip=True)
+
 
 # Average Response Time: 484.6133
 # getAverage("responseTime")
 
 # Average Priority: 2.75377537754
 # getAverage("priority")
+
+incidentList = returnIncidentsByParam("priority", "2")
+print getAverageCustom(incidentList, "responeTime")
 
 

@@ -298,8 +298,10 @@ def returnIncidentsByParam(parameter, equalsValue):
 				# Converting both to strings, ignoring data type
 				returnValues.append(incident)
 				# Appends incident value to the list of data that is returned
-		except:
+		except Exception as exp:
 			# This means the parameter is not in the incident dict
+			print exp
+			# More detailed just in case exp is different
 			raise Exception("Parameter in returnIncidentsByParam() is not valid")
 			# More detailed exception
 	return returnValues
