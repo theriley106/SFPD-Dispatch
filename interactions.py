@@ -378,7 +378,7 @@ def returnListOfParam(incidentList, param, duplicates=True):
 		return list(set(returnValues))
 		# Set only contains unique, converting back to list removed all non-unique vals
 
-def averageValue(listOfValues, forceSkip=False):
+def averageValue(listOfValues, forceSkip=False, skipZero=False):
 	# Returns an average for all values in a list
 	if forceSkip == True:
 		valList = []
@@ -387,8 +387,16 @@ def averageValue(listOfValues, forceSkip=False):
 			# Iterates through all values
 			try:
 				# Tries to convert the list into floats
-				valList.append(float(val))
-				# Appends the float val to valList
+				if skipZero == True:
+					# Default param is equal to true | skip values == 0
+					if float(val) != 0:
+						# Primarily for the response time, where invalid times == 0
+						valList.append(float(val))
+						# Appends the float val to valList
+				else:
+					# skipZero == False
+					valList.append(float(val))
+					# Appends the float val to valList
 			except:
 				# This means it wasn't able to be converted to a float
 				pass

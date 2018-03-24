@@ -62,4 +62,8 @@ incidentList = returnIncidentsByParam("priority", "2")
 
 zipCodeList = returnListOfParam(readDataset(), "zipcode_of_incident", duplicates=False)
 
+for zipCode in getZipCodes():
+	info = returnParamByZip(zipCode, "responseTime")
+	print("{} - {}")
+
 print zipCodeList
