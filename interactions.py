@@ -98,6 +98,9 @@ REDUCE_PROCESSING_POWER = True
 DATASET_FILENAME_STRUCTURE = DATASETS_DIRECTORY + "/PS_{0}_{1}_{2}.json"
 # This is for the datasets that are created by the program
 # intended as: DATASET_FILENAME_STRUCTURE.format(latitude, longitude, radius)
+RESPONSE_BY_ZIP_DATASET = "{}/response_by_zip.jsoon".format(DATASETS_DIRECTORY)
+# JSON File containing police response time per zip
+# Code for creating this file can be found in dataAnalysis.py
 
 listOfTypes = []
 
@@ -451,7 +454,9 @@ def sortIncidentList(incidentList, param, reverse=True):
 		raise Exception("Error in sortIncidentList() - parameter does not exist in incident list")
 		# More detailed exception
 
-
+def returnResponseByZip(zipCode):
+	# Returns that response time average for the zipcode
+	a = json.load(open("{}/"))
 
 # returnListOfParam((returnIncidentsByParam("zipcode_of_incident", 94108)), "available_timestamp")
 if __name__ == '__main__':
