@@ -463,7 +463,7 @@ def returnResponseByZip(zipCode):
 
 # returnListOfParam((returnIncidentsByParam("zipcode_of_incident", 94108)), "available_timestamp")
 if __name__ == '__main__':
-	'''incidentList = readDataset()
+	incidentList = readDataset()
 	# Returns all incidents taking place in 94108
 	#returnListOfParam(incidentList, ""
 	#for var in sortIncidentList(incidentList, "responseTime")[:10]:
@@ -477,5 +477,3 @@ if __name__ == '__main__':
 	for var in b:
 		info.append({"Location": var, "Count": len(re.findall(var, str(a)))})
 	print sorted(info, key=itemgetter("Count"), reverse=True)[:10]
-'''
-	print returnResponseByZip("94130")
