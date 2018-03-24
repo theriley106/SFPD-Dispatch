@@ -467,7 +467,7 @@ def ResponseByZipAsLod():
 	# This is the list of python dictionaries containing zip code and response time
 	responseData = json.load(open(RESPONSE_BY_ZIP_DATASET))
 	# Converts the json file into a python dictionary
-	for key, val in responseData:
+	for key, val in responseData.iteritems():
 		# Iterates through the values in the dictionary as a tuple containing key and value
 		listOfTimes.append({"Zip": key, "Response": val})
 		# Converts those tuples to a python dictionary and appends it to the list

@@ -29,6 +29,10 @@ def searchAddress():
 	address = request.form.get("address")
 	return ""
 
+@app.route('/responseTimeViz', methods=['GET'])
+def getViz():
+	dataset = interactions.ResponseByZipAsLod()
+	return render_template("zipResponseViz.html", responseTimeData=dataset)
 
 
 if __name__ == "__main__":
