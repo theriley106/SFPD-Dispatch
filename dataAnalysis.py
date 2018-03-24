@@ -37,6 +37,15 @@ def findAverageResponseTimeByZipCode():
 
 def getAverage(param):
 	# Param has to be completely numerical
+	listVal = []
+	incidentList = readDataset()
+	return averageValue(returnListOfParam(incidentList, param), forceSkip=True)
 
 
-print findAverageResponseTimeByZipCode()
+# Average Response Time: 484.6133
+# getAverage("responseTime")
+
+# Average Priority: 2.75377537754
+# getAverage("priority")
+
+
