@@ -44,7 +44,6 @@ def getAverage(param):
 def getAverageCustom(incidentList, param, forceSkip=True, skipZero=False):
 	# Param has to be completely numerical
 	# Incident list can be custom
-	listVal = []
 	return averageValue(returnListOfParam(incidentList, param), forceSkip=forceSkip, skipZero=skipZero)
 
 
@@ -67,12 +66,8 @@ print getAverageCustom(incidentList, "responseTime", forceSkip=True, skipZero=Tr
 incidentList = returnIncidentsByParam("priority", "3")
 print getAverageCustom(incidentList, "responseTime", forceSkip=True, skipZero=True)
 '''
-
-zipCodeList = returnListOfParam(readDataset(), "zipcode_of_incident", duplicates=False)
-
-'''for zipCode in getZipCodes():
+for zipCode in getZipCodes():
 	info = returnParamByZip(zipCode, "responseTime")
 	averageValue(info, forceSkip=True)
 	print("{} - {}")
 
-print zipCodeList'''
