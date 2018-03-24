@@ -319,8 +319,10 @@ def returnListOfParam(incidentList, param, duplicates=True):
 			# Try -> Except to catch invalid parameter
 			returnValues.append(incident[param])
 			# Appends value to the list of data that is returned
-		except:
+		except Exception as exp:
 			# This means the parameter is not in the incident dict
+			print exp
+			# More detailed just in case exp is different
 			raise Exception("Parameter in returnListOfParam() is not valid")
 			# More detailed exception
 	if duplicates == True:
