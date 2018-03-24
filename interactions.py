@@ -461,6 +461,19 @@ def returnResponseByZip(zipCode):
 	return responseData[str(zipCode)]
 	# This returns the float value containing the average response time
 
+def ResponseByZipAsLod():
+	# This returns the response time by zip code as a list of python dictionaries
+	listOfTimes = []
+	# This is the list of python dictionaries containing zip code and response time
+	responseData = json.load(open(RESPONSE_BY_ZIP_DATASET))
+	# Converts the json file into a python dictionary
+	for key, val in responseData:
+		# Iterates through the values in the dictionary as a tuple containing key and value
+		listOfTimes.append({"Zip": key, "Response": val})
+		# Converts those tuples to a python dictionary and appends it to the list
+	return listOfTimes
+	# Returns the list of python dictionaries
+
 # returnListOfParam((returnIncidentsByParam("zipcode_of_incident", 94108)), "available_timestamp")
 if __name__ == '__main__':
 	incidentList = readDataset()
