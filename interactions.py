@@ -533,6 +533,11 @@ def ReturnIncidentByLocationAndTime(timestamp, point, param, minRange=30, radius
 	return averageValue(listOfParam, forceSkip=True, skipZero=False)
 	# Returns the average of those parameters
 
+def genHTMLDescription(instance):
+	# This generates an html description for the instance
+	htmlVal = "<h1>Description</h1>"
+	# This is the top val in the popup
+
 # returnListOfParam((returnIncidentsByParam("zipcode_of_incident", 94108)), "available_timestamp")
 if __name__ == '__main__':
 	'''incidentList = readDataset()
