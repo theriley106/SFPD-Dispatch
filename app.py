@@ -42,7 +42,7 @@ def getViz():
 
 @app.route('/otherViz', methods=['GET'])
 def getVizz():
-	return render_template("heatMapExample.html", dataset=interactions.readDataset())
+	return render_template("heatMap.html", dataset=interactions.readDataset())
 
 @app.route('/getGeoJson', methods=['GET'])
 def getGeoJson():

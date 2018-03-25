@@ -538,7 +538,7 @@ def genHTMLDescription(incident):
 	if incident["priority"] == 2:
 		htmlVal = "<center><h1>Non-Emergency Incident</h1></center>"
 	else:
-		htmlVal = "<center><h1>Emergency Incident</h1></center>"
+		htmlVal = "<center><h1><i>Emergency Incident</i></h1></center>"
 	# This is the top val in the popup
 	if incident["responseTime"] != 0:
 		# Checks to see if the response time is valid or not
