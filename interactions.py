@@ -535,7 +535,7 @@ def ReturnIncidentByLocationAndTime(timestamp, point, param, minRange=30, radius
 
 def genHTMLDescription(incident):
 	# This generates an html description for the instance
-	if incident["priority"] == 2:
+	if incident["priority"] == "2":
 		htmlVal = "<center><h1><i>Non-Emergency Incident</i></h1></center>"
 	else:
 		htmlVal = "<center><h1><i>Emergency Incident</i></h1></center>"
