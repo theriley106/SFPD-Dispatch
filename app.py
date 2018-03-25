@@ -55,6 +55,10 @@ def getInstanceLngLat(lng, lat):
 		e["HTML"] = interactions.genHTMLDescription(e)
 	return jsonify(instances)
 
+@app.route("/genPopUp/<lng>/<lat>")
+def getInstanceInfo(lng, lat):
+	return render_template("popUp.html")
+
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0')

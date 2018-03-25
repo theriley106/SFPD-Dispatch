@@ -119,7 +119,9 @@ function moveToAddress() {
 
 var popup1 = new L.Popup({'autoClose':false});
 popup1.setLatLng([coords.lat, coords.lng]);
-popup1.setContent('<center><h1>First popup</h1></center>');
+var url = "/genPopUp/" + coords.lat + "/" + coords.lng;
+var htmlString = httpGet(url);
+popup1.setContent(htmlString);
 L.marker([coords.lat, coords.lng]).addTo(map)
     .bindPopup(popup1).openPopup();
 
