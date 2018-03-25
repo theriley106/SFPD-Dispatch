@@ -52,7 +52,7 @@ def getGeoJson():
 def getInstanceLngLat(lng, lat):
 	instances = interactions.incidentsNearLatLng((float(lng), float(lat)), radius=.1)
 	for e in instances:
-		e["HTML"] = "<h1>Testing</h1>"
+		e["HTML"] = interactions.genHTMLDescription(e)
 	return jsonify(instances)
 
 

@@ -533,12 +533,18 @@ def ReturnIncidentByLocationAndTime(timestamp, point, param, minRange=30, radius
 	return averageValue(listOfParam, forceSkip=True, skipZero=False)
 	# Returns the average of those parameters
 
-def genHTMLDescription(instance):
+def genHTMLDescription(incident):
 	# This generates an html description for the instance
-	htmlVal = "<h1>Description</h1>"
+	htmlVal = "<h1>Incident Description</h1>"
 	# This is the top val in the popup
-	htmlVal += "<b>Response Time</b>: {}<br>".format(incident["responseTime"])
+	if incident["responseTime"] != 0:
+		# Checks to see if the response time is valid or not
+		htmlVal += "<b>Response Time</b>: {}<br>".format(incident["responseTime"])
+	else:
+		# This means the response time is invalid
+		htmlVal += "<b>Response Time</b>: {}<br>".format("Unknown")
 	# Adds response time to the popup
+	htmlVal += "<b>Priority</b>: {}<br>".format(incident["priority"])
 	return htmlVal
 	# Returns html val as a string
 
