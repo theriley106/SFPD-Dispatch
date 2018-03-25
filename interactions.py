@@ -578,6 +578,27 @@ def grabIncidentByLocation(incidentList, point):
 	return listOfVals
 	# This returns a smaller python list
 
+def removeDuplicateLocations(incidentList):
+	# This creates a new list of incidents that does not contain more than one incident per long lat
+	newIncidentList = []
+	# Removes non-unique locations
+	locationLists = returnListOfParam(incidentList, 'location', duplicates=False)
+	# This is a list of unique locations
+	for incident in incidentList:
+		# Iterates through all items in the incident list
+		for location in locationLists:
+			# Iterates through all locations present in the incident list
+			if str(location) in str(incident):
+				# This means the incident happened at one of the locations
+				newIncidentList.append(incident)
+				# Appends that incident to the new list
+				locationLists.remove(location)
+				# No longer searches for this location.
+	return newIncidentList
+	# This returns the new incident list without duplicates for each location
+
+
+
 
 
 # returnListOfParam((returnIncidentsByParam("zipcode_of_incident", 94108)), "available_timestamp")
