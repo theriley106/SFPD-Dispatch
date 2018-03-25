@@ -97,6 +97,10 @@ function moveToAddress() {
   // This is the actual file structure
   obVal = JSON.parse(jsonString);
   // Converting string to json so we can interact with it
+
+
+
+  // This generates the geo json for the coords that are not the main ones
   for (fileIndex in obVal) {
     // The json object is a list, so this is the INDEX of all items in the list
     listElem = obVal[fileIndex];
@@ -109,6 +113,7 @@ function moveToAddress() {
     newVal = newVal.replace("HTML", listElem.HTML);
     geoJson.push(JSON.parse(newVal));
   }
+  // This is the geo json for the coords that are not the main ones
 
 
 
