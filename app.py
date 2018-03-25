@@ -78,7 +78,7 @@ def getInstanceInfo(lng, lat):
 @app.route("/genFullReport/<lng>/<lat>")
 def getFullReport(lng, lat):
 	data = {"lng": lng, "lat": lat}
-	return render_template("fullReport.html", DATA=data)
+	return render_template("resultsPage.html", DATA=data)
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0')
