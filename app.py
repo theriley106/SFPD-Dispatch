@@ -68,8 +68,12 @@ def getInstanceLngLat(lng, lat):
 
 @app.route("/genPopUp/<lng>/<lat>")
 def getInstanceInfo(lng, lat):
-	data = {"lng": lng, "lat": lat}
-	return jsonify(interactions.genInfoFromLatLng(lat, lng))
+	try:
+		data = interactions.genInfoFromLatLng(lat, lng)
+		return jsonify(data)
+	except:
+		return "<center><h1><b>No Incidents found near this location</b></h1></center>"
+
 
 @app.route("/genFullReport/<lng>/<lat>")
 def getFullReport(lng, lat):
