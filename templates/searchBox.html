@@ -121,6 +121,7 @@ var popup1 = new L.Popup({'autoClose':false});
 popup1.setLatLng([coords.lat, coords.lng]);
 var url = "/genPopUp/" + coords.lat + "/" + coords.lng;
 var htmlString = httpGet(url);
+var htmlString = "<h1><center><b>" + address + "</b></center></h1>" + htmlString;
 popup1.setContent(htmlString);
 L.marker([coords.lat, coords.lng]).addTo(map)
     .bindPopup(popup1).openPopup();
