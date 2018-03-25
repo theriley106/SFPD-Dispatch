@@ -68,6 +68,8 @@ def getInstanceLngLat(lng, lat):
 
 @app.route("/genPopUp/<lng>/<lat>")
 def getInstanceInfo(lng, lat):
+	data = {"lng": lng, "lat": lat}
+	return render_template("popUp.html", DATA=data)
 	try:
 		data = interactions.genInfoFromLatLng(lat, lng)
 		return jsonify(data)
