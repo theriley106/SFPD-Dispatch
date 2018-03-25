@@ -537,6 +537,10 @@ def genHTMLDescription(instance):
 	# This generates an html description for the instance
 	htmlVal = "<h1>Description</h1>"
 	# This is the top val in the popup
+	htmlVal += "<b>Response Time</b>: {}<br>".format(incident["responseTime"])
+	# Adds response time to the popup
+	return htmlVal
+	# Returns html val as a string
 
 # returnListOfParam((returnIncidentsByParam("zipcode_of_incident", 94108)), "available_timestamp")
 if __name__ == '__main__':
