@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, request, url_for, redirect, Markup, Response, send_file, send_from_directory, make_response, jsonify
 import interactions
+import json
 
 app = Flask(__name__, static_url_path="", static_folder="static")
 
@@ -34,6 +35,13 @@ def getViz():
 	dataset = interactions.ResponseByZipAsLod()
 	return render_template("zipResponseViz.html", responseTimeData=dataset)
 
+@app.route('/otherViz', methods=['GET'])
+def getVizz():
+	return render_template("heatMapExample.html", dataset=interactions.readDataset())
+
+@app.route('/getGeoJson', methods=['GET'])
+def getGeoJson():
+	return jsonify(json.load(open("DATASETS/geo.geojson")))
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0')
