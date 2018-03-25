@@ -552,6 +552,34 @@ def genHTMLDescription(incident):
 	return htmlVal
 	# Returns html val as a string
 
+def genInfoFromLatLng(lat, lng, radius=.1):
+	# Generates a brief amount of into from longitude and latitude
+	data = {"lng": lng, "lat": lat}
+	# Data is the python dict that will hold all the data
+	nearbyInstances = incidentsNearLatLng((float(lng), float(lat)), radius=radius)
+	# Instances that have taken place nearby
+	data['nearby'] = len(nearbyInstances)
+	# This is the amount of instances nearby
+	responseTime = returnListOfParam(nearbyInstances, 'responseTime')
+	# This is a list of response times near that long lat
+	data["averageResponseTime"] = averageValue(responseTime, forceSkip=True, skipZero=True)
+	# This calculates the average response time
+	return data
+
+def grabIncidentByLocation(incidentList, point):
+	listOfVals = []
+	# This will hold the list of vals that contain that point
+	for value in incidentList:
+		# Iterates through all the items in incidentList
+		if str(point) in str(value):
+			# This means the point is in the incident value
+			listOfVals.append(value)
+			# Adds the python dict to the new list
+	return listOfVals
+	# This returns a smaller python list
+
+
+
 # returnListOfParam((returnIncidentsByParam("zipcode_of_incident", 94108)), "available_timestamp")
 if __name__ == '__main__':
 	'''incidentList = readDataset()

@@ -51,14 +51,22 @@ def getGeoJson():
 @app.route("/getInstanceByLongLat/<lng>/<lat>")
 def getInstanceLngLat(lng, lat):
 	instances = interactions.incidentsNearLatLng((float(lng), float(lat)), radius=.1)
+	print len(instances)
+	locationLists = returnListOfParam(instances, 'location')
+	# This grabs the location to tell if more than 1 call has taken place at this location
 	for e in instances:
 		e["HTML"] = interactions.genHTMLDescription(e)
 	return jsonify(instances)
 
 @app.route("/genPopUp/<lng>/<lat>")
 def getInstanceInfo(lng, lat):
-	return render_template("popUp.html")
+	data = {"lng": lng, "lat": lat}
+	return jsonify(interactions.genInfoFromLatLng(lat, lng))
 
+@app.route("/genFullReport/<lng>/<lat>")
+def getFullReport(lng, lat):
+	data = {"lng": lng, "lat": lat}
+	return render_template("fullReport.html", DATA=data)
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0')
