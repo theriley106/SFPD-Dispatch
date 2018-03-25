@@ -50,9 +50,10 @@ def getGeoJson():
 
 @app.route("/getInstanceByLongLat/<lng>/<lat>")
 def getInstanceLngLat(lng, lat):
-	instances = interactions.incidentsNearLatLng((float(lat), float(lng)), radius=.1)
+	instances = interactions.incidentsNearLatLng((float(lng), float(lat)), radius=.1)
 	print len(instances)
 	return jsonify(instances)
+
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0')
