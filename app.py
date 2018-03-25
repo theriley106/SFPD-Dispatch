@@ -1,13 +1,18 @@
 from flask import Flask, request, render_template, request, url_for, redirect, Markup, Response, send_file, send_from_directory, make_response, jsonify
 import interactions
 import json
+import ast
 
 app = Flask(__name__, static_url_path="", static_folder="static")
 
 
 @app.route('/', methods=['GET'])
 def index():
-	return render_template("index.html", dataset=interactions.readDataset()[:500])
+	return render_template("index.html", dataset=interactions.readDataset()[:5])
+
+@app.route('/residential', methods=['GET'])
+def residential():
+	return render_template("residential.html", dataset=interactions.readDataset())
 
 @app.route('/dataset', methods=['GET'])
 def dataset():
@@ -42,6 +47,12 @@ def getVizz():
 @app.route('/getGeoJson', methods=['GET'])
 def getGeoJson():
 	return jsonify(json.load(open("DATASETS/geo.geojson")))
+
+@app.route("/getInstanceByLongLat/<lng>/<lat>")
+def getInstanceLngLat(lng, lat):
+	instances = interactions.incidentsNearLatLng((float(lat), float(lng)), radius=.1)
+	print len(instances)
+	return jsonify(instances)
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0')

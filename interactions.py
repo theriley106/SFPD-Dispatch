@@ -14,6 +14,7 @@ from datetime import datetime
 # This is used to calculate time differences
 from operator import itemgetter
 # This is for sorting the list of instances
+import copy
 
 '''
 Values from MAIN_DATASET_FILE:
@@ -232,7 +233,9 @@ def incidentsNearLatLng(point, radius):
 	# Returns a list of instances within radius of a long lat point
 	dataset = readDataset()
 	# Reads the dataset
-	for var in dataset:
+	values = copy.copy(dataset)
+	# This copies that dataset list so nothing is does to this array
+	for var in values:
 		# Goes through all values in the dataset
 		if not checkInRadius((float(var["latitude"]), float(var["longitude"])), point, radius):
 			# Checks to see if the value is within the radius

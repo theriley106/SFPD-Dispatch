@@ -88,15 +88,27 @@ function moveToAddress() {
   var place = autocomplete.getPlace();
   var coords = place.geometry.location.toJSON();
   map.setView(new L.LatLng(coords.lat, coords.lng), 17);
+  var url = "/getInstanceByLongLat/" + coords.lat + "/" + coords.lng;
+  jsonString = httpGet(url);
+  // This is the actual file structure
+  obVal = JSON.parse(jsonString);
+  // Converting string to json so we can interact with it
+  console.log(url);
+
   document.getElementById("myModalLabel").innerHTML = 'ayyyy';
   document.getElementById("model-body").innerHTML = "This works properly";
   openModel();
 
 }
 
-
-
-
+function httpGet(theUrl)
+// The network request grabs the json containing mp3 structure
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
 
 
 </script>
