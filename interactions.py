@@ -535,7 +535,10 @@ def ReturnIncidentByLocationAndTime(timestamp, point, param, minRange=30, radius
 
 def genHTMLDescription(incident):
 	# This generates an html description for the instance
-	htmlVal = "<h1>Incident Description</h1>"
+	if incident["priority"] == 2:
+		htmlVal = "<center><h1>Non-Emergency Incident</h1></center>"
+	else:
+		htmlVal = "<center><h1>Emergency Incident</h1></center>"
 	# This is the top val in the popup
 	if incident["responseTime"] != 0:
 		# Checks to see if the response time is valid or not
@@ -545,6 +548,7 @@ def genHTMLDescription(incident):
 		htmlVal += "<b>Response Time</b>: {}<br>".format("Unknown")
 	# Adds response time to the popup
 	htmlVal += "<b>Priority</b>: {}<br>".format(incident["priority"])
+	# Adds priority to the popup
 	return htmlVal
 	# Returns html val as a string
 
