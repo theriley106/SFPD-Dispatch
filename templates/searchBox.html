@@ -109,16 +109,17 @@ function moveToAddress() {
     newVal = newVal.replace("HTML", listElem.HTML);
     geoJson.push(JSON.parse(newVal));
   }
-  newVal = `{"type": "Feature","geometry": { "type": "Point", "coordinates": [-122.5046792232, 37.7744419948]},"properties": {"marker-symbol": "MARKER_SYMBOL","marker-color": "#6e8dea","city": "700 Block of 44TH AVE", "BOX_VAL": "HTML"}}`;
-    newVal = newVal.replace("-122.5046792232", coords.lng);
-    newVal = newVal.replace("37.7744419948", coords.lat);
-    newVal = newVal.replace("MARKER_SYMBOL", "");
-    newVal = newVal.replace("#6e8dea", "#42f495");
-    newVal = newVal.replace("700 Block of 44TH AVE", address);
-    newVal = newVal.replace("HTML", "<h1>Testing</h1>");
-    geoJson.push(JSON.parse(newVal));
-  console.log(geoJson);
+
+
+
+var popup1 = new L.Popup({'autoClose':false});
+popup1.setLatLng([coords.lat, coords.lng]);
+popup1.setContent('<center><h1>First popup</h1></center>');
+L.marker([coords.lat, coords.lng]).addTo(map)
+    .bindPopup(popup1).openPopup();
+
       myLayer = L.mapbox.featureLayer().addTo(map);
+
 
       // Add custom popups to each using our custom feature properties
       myLayer.on('layeradd', function(e) {
@@ -132,11 +133,11 @@ function moveToAddress() {
           marker.bindPopup(popupContent,{
               closeButton: false,
               minWidth: 400,
-          });
+          })
       });
+myLayer.setGeoJSON(geoJson);
 
       // Add features to the map
-      myLayer.setGeoJSON(geoJson);
   }
 
 function httpGet(theUrl)
