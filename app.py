@@ -51,12 +51,16 @@ def getGeoJson():
 @app.route("/getInstanceByLongLat/<lng>/<lat>")
 def getInstanceLngLat(lng, lat):
 	instances = interactions.incidentsNearLatLng((float(lng), float(lat)), radius=.1)
-	print len(instances)
-	locationLists = returnListOfParam(instances, 'location')
+	noDup = interactions.removeDuplicateLocations(instances)
 	# This grabs the location to tell if more than 1 call has taken place at this location
-	for e in instances:
-		e["HTML"] = interactions.genHTMLDescription(e)
-	return jsonify(instances)
+	print len(noDup)
+
+	locationLists = interactions.returnListOfParam(instances, 'location')
+	for e in noDup:
+		e["HTML"] = ""
+		for val in interactions.grabIncidentByLocation(instances, e["location"]):
+			e["HTML"] += interactions.genHTMLDescription(val)
+	return jsonify(noDup)
 
 @app.route("/genPopUp/<lng>/<lat>")
 def getInstanceInfo(lng, lat):
