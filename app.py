@@ -57,7 +57,11 @@ def getInstanceLngLat(lng, lat):
 
 	locationLists = interactions.returnListOfParam(instances, 'location')
 	for e in noDup:
-		e["HTML"] = ""
+		instanceCount = str(instances).count(e['location'])
+		if instanceCount < 2:
+			e["HTML"] = "<h1><center><b>{} Instance reported at this location</b></center></h1>".format(instanceCount)
+		else:
+			e["HTML"] = "<h1><center><b>{} Instances reported at this location</b></center></h1>".format(instanceCount)
 		for val in interactions.grabIncidentByLocation(instances, e["location"]):
 			e["HTML"] += interactions.genHTMLDescription(val)
 	return jsonify(noDup)
