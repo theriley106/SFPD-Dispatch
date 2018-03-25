@@ -51,7 +51,8 @@ def getGeoJson():
 @app.route("/getInstanceByLongLat/<lng>/<lat>")
 def getInstanceLngLat(lng, lat):
 	instances = interactions.incidentsNearLatLng((float(lng), float(lat)), radius=.1)
-	print len(instances)
+	for e in instances:
+		e["HTML"] = "<h1>Testing</h1>"
 	return jsonify(instances)
 
 
