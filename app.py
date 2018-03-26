@@ -70,7 +70,7 @@ def getInstanceLngLat(lng, lat):
 def getInstanceInfo(lng, lat):
 	data = {"lng": lng, "lat": lat}
 	#return render_template("popUp.html", DATA=data)
-	return jsonify(interactions.findNearestFireDepartment((float(lng), float(lat))))
+	return jsonify(interactions.findNearestHospital((float(lng), float(lat))))
 	try:
 		data = interactions.genInfoFromLatLng(lat, lng)
 		return jsonify(data)

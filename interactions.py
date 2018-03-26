@@ -566,6 +566,8 @@ def genInfoFromLatLng(lat, lng, radius=.1):
 	# This is a list of response times near that long lat
 	data["averageResponseTime"] = averageValue(responseTime, forceSkip=True, skipZero=True)
 	# This calculates the average response time
+	data["nearestFireDepartment"] = findNearestFireDepartment((float(lng), float(lat)))
+	# This is the nearest fire department
 	return data
 
 def grabIncidentByLocation(incidentList, point):
@@ -622,6 +624,28 @@ def findNearestFireDepartment(point):
 	return nearestDepartment
 	# Returns a dictionary containing the distance and address of the nearest department
 
+def findNearestHospital(point):
+	# Returns the nearest hospital given a long lat point
+	locations = json.load(open(EMERGENCY_LOCATIONS_DATASET))
+	# Reads the dataset containing the building locations
+	distance = haversine(point, tuple(locations["Hospitals"][0]["Location"]), miles=True)
+	# Distance from hospital at index 0
+	address = locations["Hospitals"][0]["Address"]
+	# Address of hospital at index 0
+	nearestDepartment = {"Distance": distance, "Address": address}
+	# This sets the nearest hospital as the first one in the list
+	for department in locations["Hospitals"][1:]:
+		# Iterates from second element to last
+		distance = haversine(point, tuple(department["Location"]), miles=True)
+		# This returns the distance in miles from the defined point
+		if distance < nearestDepartment["Distance"]:
+			# This means the distance is lower
+			address = department["Address"]
+			# Sets the address to the new nearest hospital
+			nearestDepartment = {"Distance": distance, "Address": address}
+			# Sets nearest hospital as new nearest hospital
+	return nearestDepartment
+	# Returns a dictionary containing the distance and address of the nearest hospital
 
 
 
