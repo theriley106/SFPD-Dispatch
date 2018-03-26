@@ -18,7 +18,7 @@ San Francisco Police Department Analytics for the Capital One Software Engineeri
 
 <h1 align="center">In Summary</h1>
 
-<p>My project proposed the idea that evenly distributing emergency response headquarters would decrease the response time required for problematic areas of San Francisco where response times can be as much as 5 times higher than the SFPD average.</p>
+<p>My project proposed the idea that evenly distributing emergency response headquarters would decrease the response time required for problematic areas of San Francisco.  The focus primarily being the areas in which response times are more than 5 times higher than the SFPD average.</p>
 
 <h1 align="center">Interesting Facts about the Data Set</h1>
 
