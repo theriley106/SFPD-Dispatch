@@ -102,6 +102,8 @@ DATASET_FILENAME_STRUCTURE = DATASETS_DIRECTORY + "/PS_{0}_{1}_{2}.json"
 RESPONSE_BY_ZIP_DATASET = "{}/response_by_zip.json".format(DATASETS_DIRECTORY)
 # JSON File containing police response time per zip
 # Code for creating this file can be found in dataAnalysis.py
+EMERGENCY_LOCATIONS_DATASET = "{}/emergency_locations.json".format(DATASETS_DIRECTORY)
+# This contains the log lat coordinates for the nearest hospitals, police stations, and fire departments
 
 listOfTypes = []
 
@@ -597,6 +599,28 @@ def removeDuplicateLocations(incidentList):
 	return newIncidentList
 	# This returns the new incident list without duplicates for each location
 
+def findNearestFireDepartment(point):
+	# Returns the nearest fire department given a long lat point
+	locations = json.load(open(EMERGENCY_LOCATIONS_DATASET))
+	# Reads the dataset containing the building locations
+	distance = haversine(point, tuple(locations["FireDepartments"][0]["Location"]), miles=True)
+	# Distance from fire department at index 0
+	address = locations["FireDepartments"][0]["Address"]
+	# Address of fire departmetn at index 0
+	nearestDepartment = {"Distance": distance, "Address": address}
+	# This sets the nearest department as the first one in the list
+	for department in locations["FireDepartments"][1:]:
+		# Iterates from second element to last
+		distance = haversine(point, tuple(department["Location"]), miles=True)
+		# This returns the distance in miles from the defined point
+		if distance < nearestDepartment["Distance"]:
+			# This means the distance is lower
+			address = department["Address"]
+			# Sets the address to the new nearest department
+			nearestDepartment = {"Distance": distance, "Address": address}
+			# Sets nearest department as new nearest department
+	return nearestDepartment
+	# Returns a dictionary containing the distance and address of the nearest department
 
 
 
