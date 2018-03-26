@@ -15,6 +15,9 @@ from datetime import datetime
 from operator import itemgetter
 # This is for sorting the list of instances
 import copy
+# For copying dataset that is iterated over
+import humanfriendly
+# For converting seconds into a string
 
 '''
 Values from MAIN_DATASET_FILE:
@@ -653,6 +656,8 @@ def findNearestHospital(point):
 
 def convertSecondsToMinString(seconds):
 	# This converts a float containing seconds into a string containing minutes
+	return humanfriendly.format_timespan(seconds)
+	# Converts it to the format of x minutes and x seconds
 
 
 
