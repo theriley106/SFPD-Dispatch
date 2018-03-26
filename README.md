@@ -143,7 +143,7 @@ The data visualization is broken up into 4 parts:
 
 ## Additional Data Points
 
-I scraped address for nearby Fire Departments, Hospitals, and Police Stations (below) to further emphasize the importance of having evenly distributed emergency service headquarters.
+I scraped address information for nearby Fire Departments, Hospitals, and Police Stations (below) to further emphasize the importance of having evenly distributed emergency service headquarters.
 
 I also used the <a href="https://www.psc.isr.umich.edu/dis/census/Features/tract2zip/">University of Michigan Mean Household Income</a> dataset to look at the correlation between police response time and mean household income.
 
