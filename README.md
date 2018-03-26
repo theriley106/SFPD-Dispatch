@@ -6,13 +6,13 @@ Capital One Software Engineering Summit
 
 ### Sample Addresses
 
-101 Post Street San Francisco, CA 94108 - **Capital One Cafe in Union Square**
+**101 Post Street San Francisco, CA 94108** - Capital One Cafe in Union Square
 
-420 Montgomery Street San Francisco, CA 94104 - **Capital One Residential Bank**
+**420 Montgomery Street San Francisco, CA 94104** - Capital One Residential Bank
 
-2603 Camino RamonSan Ramon, CA 94583 - **Capital One Residential Bank**
+**2603 Camino RamonSan Ramon, CA 94583** - Capital One Residential Bank
 
-999 Van Ness Ave, San Francisco, CA 94109 - <b>The <i>second</i> coolest Tesla Showroom in Northern California...</b>
+<b>999 Van Ness Ave, San Francisco, CA 94109</b> - The <i>second</i> coolest Tesla Showroom in Northern California...
 
 
 29.07% Of calls are to unique locations
