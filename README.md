@@ -14,12 +14,12 @@ Capital One Software Engineering Summit
 
 **999 Van Ness Ave, San Francisco, CA 94109** - The <i>second</i> coolest Tesla Showroom in Northern California...
 
-**527 5th St, San Francisco, CA 94107, USA** - An address in SF that has placed *52* calls within an 11 day period
+**527 5th St, San Francisco, CA 94107, USA** - An address in SF that has placed *52* Reports within an 11 day period
 
 <h1 align="center">Interesting Facts about the Data Set</h1>
 
 
-- Only **29.07%** Of calls are to unique locations
+- Only **29.07%** Of Reports are to unique locations
 
 - The remaining **70.93%** are repeated locations
 
@@ -27,25 +27,25 @@ Capital One Software Engineering Summit
 
 ## Most Active Police Destinations
 
-1. (37.77762423892872, -122.39998111124002) - **52 Calls**
+1. (37.77762423892872, -122.39998111124002) - **52 Reports**
 
-2. (37.79267911710725, -122.39685349996866) - **45 Calls**
+2. (37.79267911710725, -122.39685349996866) - **45 Reports**
 
-3. (37.786117211837905, -122.4198542456919) - **44 Calls**
+3. (37.786117211837905, -122.4198542456919) - **44 Reports**
 
-4. (37.78186544733037, -122.41428534642068) - **41 Calls**
+4. (37.78186544733037, -122.41428534642068) - **41 Reports**
 
-5. (37.740332988667284, -122.4664485824384) - **40 Calls**
+5. (37.740332988667284, -122.4664485824384) - **40 Reports**
 
-6. (37.77953108466273, -122.41354254868111) - **38 Calls**
+6. (37.77953108466273, -122.41354254868111) - **38 Reports**
 
-7. (37.78480738867744, -122.41361543826261) - **34 Calls**
+7. (37.78480738867744, -122.41361543826261) - **34 Reports**
 
-8. (37.786409613771546, -122.4080362362708) - **34 Calls**
+8. (37.786409613771546, -122.4080362362708) - **34 Reports**
 
-9. (37.7980449492818, -122.3963670843851) - **34 Calls**
+9. (37.7980449492818, -122.3963670843851) - **34 Reports**
 
-10. (37.777712440431586, -122.41273670742505) - **32 Calls**
+10. (37.777712440431586, -122.41273670742505) - **32 Reports**
 
 Police departments:
 [u'766 Vallejo Street', u'1251 3rd Street', u'201 Williams Avenue', u'630 Valencia Street', u'1125 Fillmore Street', u'1899 Waller Street', u'461 6th Avenue', u'1 Sgt. John V. Young Lane', u'2345 24th Avenue', u'301 Eddy Street']
