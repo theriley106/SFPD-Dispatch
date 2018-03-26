@@ -52,7 +52,51 @@ Police departments:
 
 Fire Departments:
 
-[u'935 Folsom at 5th Street', u'1340 Powell Street at Broadway', u'1067 Post Street at Polk Street ', u'449 Mission Rock at 3rd Street ', u'1301 Turk Street at Webster Street', u'135 Sanchez Street at Henry Street', u'2300 Folsom Street at 19th Street', u'36 Bluxome Street at 4th Street', u'2245 Jerrold Avenue at Upton Street', u'655 Presidio Avenue at Bush Street', u'3880 26th Street at Church Street', u'1145 Stanyan Street at Grattan Street', u'530 Sansome Street at Washington Street', u'551 26th Avenue at Geary Boulevard', u'1000 Ocean Avenue at Phelan Avenue', u'2251 Greenwich Street at Fillmore Street', u'1295 Shafter Avenue at Ingalls Street', u'1935 32nd Avenue at Ortega Street', u'390 Buckingham Way at Winston Street', u'285 Olympia Way at Clarendon Avenue', u'1443 Grove Street at Broderick Street', u'1290 16th Avenue at Irving Street', u'1348 45th Avenue at Judah Street', u'100 Hoffman Avenue at Alvarado Street', u'3305 3rd Street at Cargo Way', u'80 Digby Street at Addison Street', u'1814 Stockton Street at Greenwich Street', u'299 Vermont Street at 16th Street', u'441 12th Avenue at Geary Boulevard', u'194 Park Street at Holly Park Circle', u'8 Capital Street at Broad Street', u'499 41st Avenue at Geary Boulevard', u'Pier 22\xbd, The Embarcadero at Harrison Street', u'109 Oak Street at Franklin Street', u'798 Wisconsin Street at 22nd Street', u'2150 California Street at Laguna Street', u'1091 Portola Drive at Miraloma Drive', u'2155 18th Avenue at Rivera Street', u'1325 Leavenworth Street at Jackson Street', u'2430 San Bruno Avenue at Silver Avenue', u'720 Moscow Street at France Avenue', u'1298 Girard Street at Wilde Avenue', u'800 Avenue I at 10th Street, Treasure Island', u'1415 Evans Avenue at Mendell Street', u'218 Lincoln Blvd at Keyes Avenue']
+- 935 Folsom at 5th Street
+- 1340 Powell Street at Broadway
+- 1067 Post Street at Polk Street
+- 449 Mission Rock at 3rd Street
+- 1301 Turk Street at Webster Street
+- 135 Sanchez Street at Henry Street
+- 2300 Folsom Street at 19th Street
+- 36 Bluxome Street at 4th Street
+- 2245 Jerrold Avenue at Upton Street
+- 655 Presidio Avenue at Bush Street
+- 3880 26th Street at Church Street
+- 1145 Stanyan Street at Grattan Street
+- 530 Sansome Street at Washington Street
+- 551 26th Avenue at Geary Boulevard
+- 1000 Ocean Avenue at Phelan Avenue
+- 2251 Greenwich Street at Fillmore Street
+- 1295 Shafter Avenue at Ingalls Street
+- 1935 32nd Avenue at Ortega Street
+- 390 Buckingham Way at Winston Street
+- 285 Olympia Way at Clarendon Avenue
+- 1443 Grove Street at Broderick Street
+- 1290 16th Avenue at Irving Street
+- 1348 45th Avenue at Judah Street
+- 100 Hoffman Avenue at Alvarado Street
+- 3305 3rd Street at Cargo Way
+- 80 Digby Street at Addison Street
+- 1814 Stockton Street at Greenwich Street
+- 299 Vermont Street at 16th Street
+- 441 12th Avenue at Geary Boulevard
+- 194 Park Street at Holly Park Circle
+- 8 Capital Street at Broad Street
+- 499 41st Avenue at Geary Boulevard
+- Pier 22½, The Embarcadero at Harrison Street
+- 109 Oak Street at Franklin Street
+- 798 Wisconsin Street at 22nd Street
+- 2150 California Street at Laguna Street
+- 1091 Portola Drive at Miraloma Drive
+- 2155 18th Avenue at Rivera Street
+- 1325 Leavenworth Street at Jackson Street
+- 2430 San Bruno Avenue at Silver Avenue
+- 720 Moscow Street at France Avenue
+- 1298 Girard Street at Wilde Avenue
+- 800 Avenue I at 10th Street, Treasure Island
+- 1415 Evans Avenue at Mendell Street
+- 218 Lincoln Blvd at Keyes Avenue
 
 
 Hospital List:
