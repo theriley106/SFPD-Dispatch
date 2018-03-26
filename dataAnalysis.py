@@ -94,4 +94,5 @@ Response time per zip
 '''
 
 
-print getDistance()
+a = returnListOfParam(readDataset(), "responseTime")
+print averageValue(a, forceSkip=True)

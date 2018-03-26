@@ -12,7 +12,7 @@ Capital One Software Engineering Summit
 
 **2603 Camino RamonSan Ramon, CA 94583** - Capital One Residential Bank
 
-**999 Van Ness Ave, San Francisco, CA 94109** - The <i>second</i> coolest Tesla Showroom in Northern California...
+**999 Van Ness Ave, San Francisco, CA 94109** - The <i>second</i> coolest Tesla showroom in Northern California...
 
 **527 5th St, San Francisco, CA 94107, USA** - An address in SF that has placed *52* Reports within an 11 day period
 
@@ -22,6 +22,10 @@ Capital One Software Engineering Summit
 - Only **29.07%** Of Reports are to unique locations
 
 - The remaining **70.93%** are repeated locations
+
+- The average SFPD Response Time is **8 minutes and 4.61 seconds**
+
+- Calls placed from the Zipcode **94127** have an average Response Time of **45 minutes and 19.51 seconds**, 5.61 times the San Francisco Average...
 
 ## Most Active Police Destinations
 
