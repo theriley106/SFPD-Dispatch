@@ -31,6 +31,10 @@ Capital One Software Engineering Summit
 
 - Coincidentally, **94127** has the highest Mean Household Income out of all of the zipcodes in SF ($127,575)
 
+### About the Web App
+
+The web app is hosted using <a href"https://www.heroku.com/">Heroku</a>
+
 ## Most Active Police Destinations
 
 1. (37.77762423892872, -122.39998111124002) - **52 Reports**
