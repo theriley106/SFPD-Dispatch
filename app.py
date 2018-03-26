@@ -37,7 +37,7 @@ def searchAddress():
 	address = request.form.get("address")
 	return ""
 
-@app.route('/otherViz', methods=['GET'])
+@app.route('/heatMap', methods=['GET'])
 def getVizz():
 	return render_template("heatMap.html", dataset=interactions.readDataset())
 
