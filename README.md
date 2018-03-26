@@ -10,7 +10,7 @@ Capital One Software Engineering Summit
 
 **420 Montgomery Street San Francisco, CA 94104** - Capital One Residential Bank
 
-**2603 Camino RamonSan Ramon, CA 94583** - Capital One Residential Bank
+**2603 Camino Ramon San Ramon, CA 94583** - Capital One Residential Bank
 
 **999 Van Ness Ave, San Francisco, CA 94109** - The <i>second</i> coolest Tesla showroom in Northern California...
 
@@ -31,7 +31,29 @@ Capital One Software Engineering Summit
 
 - Coincidentally, **94127** has the highest Mean Household Income out of all of the zipcodes in SF ($127,575)
 
-### About the Web App
+## Most Active Police Destinations
+
+1. (37.77762423892872, -122.39998111124002) - **52 Reports**
+
+2. (37.79267911710725, -122.39685349996866) - **45 Reports**
+
+3. (37.786117211837905, -122.4198542456919) - **44 Reports**
+
+4. (37.78186544733037, -122.41428534642068) - **41 Reports**
+
+5. (37.740332988667284, -122.4664485824384) - **40 Reports**
+
+6. (37.77953108466273, -122.41354254868111) - **38 Reports**
+
+7. (37.78480738867744, -122.41361543826261) - **34 Reports**
+
+8. (37.786409613771546, -122.4080362362708) - **34 Reports**
+
+9. (37.7980449492818, -122.3963670843851) - **34 Reports**
+
+10. (37.777712440431586, -122.41273670742505) - **32 Reports**
+
+<h1 align="center">About the Web App</h1>
 
 The web app is hosted using <a href="https://www.heroku.com/">Heroku</a>
 
@@ -58,7 +80,7 @@ def incidentsNearLatLng(point, radius):
 	# Returns a list of python dictionaries
 ```
 
-And I used something called the Haversine equation to calculate distances between two long/lat points.  This allowed me to filter out incidents to only show ones that happened nearby.
+And I used something called the Haversine equation to calculate distance between two long/lat points.  This allowed me to filter out the data to only show incidents that happened nearby.
 
 The data visualization is broken up into 4 parts:
 
@@ -115,30 +137,11 @@ The data visualization is broken up into 4 parts:
 
 
 
+## Additional Data Points
 
+I scraped address for nearby Fire Departments, Hospitals, and Police Stations (below) to further emphasize the importance of having evenly distributed emergency service headquarters.
 
-
-## Most Active Police Destinations
-
-1. (37.77762423892872, -122.39998111124002) - **52 Reports**
-
-2. (37.79267911710725, -122.39685349996866) - **45 Reports**
-
-3. (37.786117211837905, -122.4198542456919) - **44 Reports**
-
-4. (37.78186544733037, -122.41428534642068) - **41 Reports**
-
-5. (37.740332988667284, -122.4664485824384) - **40 Reports**
-
-6. (37.77953108466273, -122.41354254868111) - **38 Reports**
-
-7. (37.78480738867744, -122.41361543826261) - **34 Reports**
-
-8. (37.786409613771546, -122.4080362362708) - **34 Reports**
-
-9. (37.7980449492818, -122.3963670843851) - **34 Reports**
-
-10. (37.777712440431586, -122.41273670742505) - **32 Reports**
+I also used the <a href="https://www.psc.isr.umich.edu/dis/census/Features/tract2zip/">University of Michigan Mean Household Income</a> dataset to look at the correlation between police response time and mean household income.
 
 Fire Departments:
 
