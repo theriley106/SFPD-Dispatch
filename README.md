@@ -16,6 +16,10 @@ San Francisco Police Department Analytics for the Capital One Software Engineeri
 
 **527 5th St, San Francisco, CA 94107, USA** - An address in SF that has placed *52* Reports within an 11 day period
 
+<h1 align="center">In Summary</h1>
+
+<p>My project proposed the idea that evenly distributing emergency response headquarters would decrease the response time required for problematic areas of San Francisco where response times can be as much as 5 times higher than the SFPD average.</p>
+
 <h1 align="center">Interesting Facts about the Data Set</h1>
 
 
