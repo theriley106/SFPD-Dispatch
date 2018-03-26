@@ -43,22 +43,52 @@
   float: none;
 }
 
+ #my_button{
+          position:absolute;
+          bottom:2%;
+          color: #fff;
+          background-color: #4d90fe;
+          padding: 11px;
+
+          border: 1px solid transparent;
+          border-radius: 2px;
+          box-sizing: border-box;
+          -moz-box-sizing: border-box;
+
+          outline: none;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+          alignment-baseline:central;
+          width:90%;
+          left:5%;
+          text-align:center;
+          text-decoration:none;
+
+
+          margin:0px auto;}
+
+
+         #my_button:hover{
+             background-color:#3B6EC2;}
+
 </style>
 <div class="col-md-6">
   <br><br>
   <div id="custom-search-input">
       <div class="input-group col-md-12" id="locationField">
-          <input type="text" id="autocomplete" name="address" class="form-control input-lg flipthis-highlight" placeholder="Address">
+          <input type="text" id="autocomplete" name="address" class="form-control input-lg flipthis-highlight" placeholder="Input an Address in San Francisco">
           <span class="input-group-btn">
               <button class="btn btn-info btn-lg" onclick="openModel();">
                   <i class="glyphicon glyphicon-search"></i>
               </button>
-          </span>
+              </span>
+
+
           </div>
+
+
       </div>
 
 </div>
-
 <script>
 // This example displays an address form, using the autocomplete feature
 // of the Google Places API to help users fill in the information.
