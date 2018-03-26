@@ -562,6 +562,8 @@ def genInfoFromLatLng(lat, lng, radius=.1):
 	# Instances that have taken place nearby
 	data['nearby'] = len(nearbyInstances)
 	# This is the amount of instances nearby
+	data["frequency"] = (float(data["nearby"]) / 11.0)
+	# This is the amount of calls per day
 	responseTime = returnListOfParam(nearbyInstances, 'responseTime')
 	# This is a list of response times near that long lat
 	data["averageResponseTime"] = averageValue(responseTime, forceSkip=True, skipZero=True)
