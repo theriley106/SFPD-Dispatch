@@ -568,6 +568,8 @@ def genInfoFromLatLng(lat, lng, radius=.1):
 	# This calculates the average response time
 	data["nearestFireDepartment"] = findNearestFireDepartment((float(lng), float(lat)))
 	# This is the nearest fire department
+	data["nearestHospital"] = findNearestHospital((float(lng), float(lat)))
+	# This is the nearest hospital
 	return data
 
 def grabIncidentByLocation(incidentList, point):
