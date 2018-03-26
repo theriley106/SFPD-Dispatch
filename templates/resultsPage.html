@@ -57,7 +57,7 @@
           <div class="well">
           <center>
             <p><b>Nearest Hospital</b></p>
-            <h3><b>{{ DATA.nearestHospital.Distance }} Miles</b></h3>
+            <h3><b>{{ "%.2f"|format(DATA.nearestHospital.Distance) }} Miles</b></h3>
             <p>{{ DATA.nearestHospital.Address }}</p>
             </center>
           </div>
@@ -66,8 +66,9 @@
 <div class="col-sm-3">
           <div class="well">
           <center>
-            <p><b>Median Household Income</b></p>
-            <h3><b>$testing</b></h3>
+            <p><b>Nearest Fire Station</b></p>
+            <h3><b>{{ "%.2f"|format(DATA.nearestFireDepartment.Distance) }} Miles</b></h3>
+            <p>{{ DATA.nearestFireDepartment.Address }}</p>
             </center>
           </div>
         </div>
