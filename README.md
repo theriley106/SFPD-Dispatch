@@ -4,7 +4,7 @@ Capital One Software Engineering Summit
 <h1 align="center"><a href="http://sfpd-data.herokuapp.com/">SFPD Data Analytics Heroku Web App</a></h1>
 
 
-### Sample Addresses
+<h3 align="center">Example Addresses</h3>
 
 **101 Post Street San Francisco, CA 94108** - Capital One Cafe in Union Square
 
