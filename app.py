@@ -83,5 +83,16 @@ def getFullReport(lng, lat):
 	data = {"lng": lng, "lat": lat}
 	return render_template("resultsPage.html", DATA=interactions.genInfoFromLatLng(lng, lat))
 
+@app.route("/test")
+def genTime():
+	return render_template("inputTime.html")
+
+@app.route("/timeEstimates/<lng>/<lat>/<timeVal>")
+def genEstimateFromTime(lng, lat, timeVal):
+	hour = timeVal[:2]
+	minute = timeVal[2:]
+	#return interactions.ReturnIncidentByLocationAndTime("12:15", (float(lng), float(lat)), "priority", minRange=120)
+	return str(interactions.ReturnIncidentByLocationAndTime("{}:{}".format(hour, minute), (float(lng), float(lat)), "responseTime", minRange=600))
+
 if __name__ == "__main__":
 	app.run(host='0.0.0.0')

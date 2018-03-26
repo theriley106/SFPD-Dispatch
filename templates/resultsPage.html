@@ -93,58 +93,52 @@
           </center>
         </div>
 
-
+</div>
 <div class="row">
 
 
 
 
-        <div class="col-sm-3">
-          <div class="well">
-          <center>
-            <p><b>Electronics</b></p>
-            <h3><b>testing</b></h3>
+         <div class="col-md-9"><div class="well">
+
+          <script>
+          function print() {
+            t = document.getElementById('time').value;
+            var [h,m] = t.split(":");
+            var url = "/timeEstimates/" + "{{ DATA.lng }}/{{ DATA.lat }}/" + h + m;
+            jsonString = httpGet(url);
+            console.log(jsonString);
+            document.getElementById('responsePrediction').innerHTML = jsonString;
+          }
+            function httpGet(theUrl)
+            // The network request grabs the json containing mp3 structure
+            {
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+                xmlHttp.send( null );
+                return xmlHttp.responseText;
+            }
+
+          </script>
+          <input class="form-control" type="time" id="time">
+          <button onclick="print()">Submit</button>
           </div>
-          </center>
-        </div>
-
-           <div class="col-sm-3">
-          <div class="well">
-          <center>
-            <p><b>Cell Phones</b></p>
-            <h3><b>testing</b></h3>
-            </center>
           </div>
-        </div>
-
-           <div class="col-sm-3">
-          <div class="well">
-          <center>
-            <p><b>Video Games</b></p>
-            <h3><b>testing</b></h3>
-            </center>
-          </div>
-        </div>
-
-           <div class="col-sm-3">
-          <div class="well">
-          <center>
-            <p><b>Home Essentials</b></p>
-            <h3><b>testing</b></h3>
-            </center>
-          </div>
-        </div>
 
 
 
 
+  <div class="col-sm-3">
+    <div class="well">
+    <center>
+      <p><b>Response Prediction</b></p>
+      <h3 id="PriorityPrediction"><b>Input Time to Generate Prediction</b></h3>
+      <p id="responsePrediction"></p>
+    </div>
+    </center>
+  </div>
 
-
-          </div>
-        </div>
-
-
-
+</div>
 
 
           </div>
@@ -153,7 +147,6 @@
     </div>
   </div>
 </div>
-
 
 
 </body>

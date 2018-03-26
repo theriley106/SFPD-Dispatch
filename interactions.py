@@ -671,4 +671,5 @@ if __name__ == '__main__':
 	print sorted(info, key=itemgetter("Count"), reverse=True)[:10]'''
 	#print getAverageByLatLong((37.77444199483868, -122.5046792231959), "priority")
 	#print len(returnIncidentsByTime("9:15"))
-	print guessIncidentType("12:15", (37.77444199483868, -122.5046792231959), "responseTime")
+	#print guessIncidentType("12:15", (37.77444199483868, -122.5046792231959), "responseTime")
+	print ReturnIncidentByLocationAndTime("12:15", (37.78868610000001, -122.40385309999999), "priority", minRange=120)

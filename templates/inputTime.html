@@ -1,0 +1,10 @@
+<script>
+function print() {
+  t = document.getElementById('time').value
+  var [h,m] = t.split(":");
+  console.log((h%12+12*(h%12==0))+":"+m, h >= 12 ? 'PM' : 'AM');
+}
+
+</script>
+<input class="form-control" type="time" id="time">
+<button onclick="print()">Submit</button>
