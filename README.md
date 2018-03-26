@@ -62,7 +62,7 @@ And I used something called the Haversine equation to calculate distances betwee
 
 The data visualization is broken up into 4 parts:
 
-### #1
+### #1 Primary Map/Visualization
 
 [![N|Solid](static/pt1.png)](#)
 <p align="center">Primary Visualization that allows the user to navigate through a map of San Francisco.  Address autocomplete has been implemented using Google's Javascript Map API</p>
@@ -73,10 +73,10 @@ The data visualization is broken up into 4 parts:
 [![N|Solid](static/nearByPoints.png)](#)
 <p align="center">You can click nearby point to learn details about incidents that have happened nearby</p>
 
-### #2
+### #2 Reports by Residential Address/Predictions
 
 [![N|Solid](static/example.png)](#)
-<p align="center">After the user clicks "View Full Report" the web app will open another window showing details surrounding that Long/Lat coordinate</p>
+<p align="center">After the user clicks "View Full Report" the web app will open another window showing details surrounding that Long/Lat coordinate.  <b>Note: The background is a satellite view of the address that was inputted.</b></p>
 
 [![N|Solid](static/boxWithNoInfo.png)](#)
 <p align="center">This coordinate is <b>NOT</b> a coordinate that's in the Dataset, so it uses nearby instances to make predictions about call priority and response time</p>
@@ -85,7 +85,37 @@ The data visualization is broken up into 4 parts:
 <p align="center">The user can input a time and the web app will make a prediction about the type of call and response time</p>
 
 [![N|Solid](static/boxWithInfo.png)](#)
-<p align="center">The predictions are made using nearby instances</p>
+<p align="center">The predictions are made using nearby incident reports</p>
+
+[![N|Solid](static/buttons.png)](#)
+<p align="center">After looking at the incident report, users can either go back to the residental map, view the Github repository, or view the additional data visualizations surrounding the entire dataset</p>
+
+### #3 Data Visualizations
+
+[![N|Solid](static/AverageResponseTime.png)](#)
+<p align="center">Visualization showing average response time for each zip code in San Francisco</p>
+
+[![N|Solid](static/MHH.png)](#)
+<p align="center">Visualization showing Mean Household Income for each zip code in San Francisco</p>
+
+[![N|Solid](static/NearestFireDepartment.png)](#)
+<p align="center">Visualization showing average distance from a fire department for each zip code in San Francisco</p>
+
+[![N|Solid](static/SFPD_Frequency.png)](#)
+<p align="center">Visualization showing frequency of Non-Emergency and Emergency calls to the San Francisco police department</p>
+
+[![N|Solid](static/openHeatmap.png)](#)
+<p align="center">After viewing the Data Visualizations, users can go back to the top of the page and click on the large blue button to open the Heatmap</p>
+
+### #4 Heatmap
+
+[![N|Solid](static/heatMap.png)](#)
+<p align="center">The Heatmap represents the frequency of calls by location in San Francisco</p>
+
+
+
+
+
 
 
 ## Most Active Police Destinations
