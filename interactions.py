@@ -621,7 +621,7 @@ def findNearestFireDepartment(point):
 			# This means the distance is lower
 			address = department["Address"]
 			# Sets the address to the new nearest department
-			nearestDepartment = {"Distance": distance, "Address": address}
+			nearestDepartment = {"Distance": str(round(distance, 2)), "Address": address}
 			# Sets nearest department as new nearest department
 	return nearestDepartment
 	# Returns a dictionary containing the distance and address of the nearest department
@@ -634,7 +634,7 @@ def findNearestHospital(point):
 	# Distance from hospital at index 0
 	address = locations["Hospitals"][0]["Address"]
 	# Address of hospital at index 0
-	nearestDepartment = {"Distance": distance, "Address": address}
+	nearestDepartment = {"Distance": str(round(distance, 2)), "Address": address}
 	# This sets the nearest hospital as the first one in the list
 	for department in locations["Hospitals"][1:]:
 		# Iterates from second element to last
