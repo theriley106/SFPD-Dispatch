@@ -25,7 +25,11 @@ Capital One Software Engineering Summit
 
 - The average SFPD Response Time is **8 minutes and 4.61 seconds**
 
-- Calls placed from the Zipcode **94127** have an average Response Time of **45 minutes and 19.51 seconds**, 5.61 times the San Francisco Average...
+- Calls placed from the Zipcode **94127** have an average response time of **45 minutes and 19.51 seconds**
+
+- The response time average for the zipcode **94127** is 5.61 times the San Francisco Average...
+
+- Coincidentally, **94127** has the highest Mean Household Income out of all of the zipcodes in SF ($127,575)
 
 ## Most Active Police Destinations
 
