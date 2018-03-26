@@ -10,10 +10,11 @@ app = Flask(__name__, static_url_path="", static_folder="static")
 
 @app.route('/', methods=['GET'])
 def index():
-	return render_template("index.html", dataset=interactions.readDataset()[:5])
+	return render_template("index.html")
 
 @app.route('/heatMap', methods=['GET'])
-def getVizz():
+def getHeatMap():
+	# This returns the Heatmap indicating call frequency at certain coordinates
 	return render_template("heatMap.html", dataset=interactions.readDataset())
 
 @app.route('/getGeoJson', methods=['GET'])
