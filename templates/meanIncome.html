@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en"><head>
+
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" type="image/x-icon" href="https://production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico">
+  <link rel="mask-icon" type="" href="https://production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111">
+  <title>Mean Household Income By Zip Code</title>
+
+  <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Lato">
+
+<style>
+.verticaltext_content {
+  position: relative;
+  transform: rotate(-90deg);
+  right:90px;   //These three positions need adjusting
+  bottom:150px; //based on your actual chart size
+  width:200px;
+}
+</style>
+</head>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+
+
+<style>
+.verticaltext_content {
+  position: relative;
+  transform: rotate(-90deg);
+  right:90px;   //These three positions need adjusting
+  bottom:150px; //based on your actual chart size
+  width:200px;
+}
+</style>
+  <canvas id="densityChartz" width="583" height="258" style="width: 583px; height: 258px;"></canvas>
+    <script>
+      var densityCanvas = document.getElementById("densityChartz");
+
+Chart.defaults.global.defaultFontFamily = "Lato";
+Chart.defaults.global.defaultFontSize = 18;
+
+var densityData = {
+  label: 'Mean Household Income (In USD)',
+  data: [{% for info in MeanIncome %}
+                {{ info.MHH }},
+                {% endfor %}],
+  backgroundColor: [
+  {% for info in MeanIncome %}
+
+    'rgb(157, 247, 214)',
+                {% endfor %}
+  ],
+  borderColor: [
+
+    {% for info in MeanIncome %}
+
+    'rgb(157, 247, 214)',
+                {% endfor %}
+  ],
+  borderWidth: 2,
+  hoverBorderWidth: 0
+};
+
+var chartOptions = {
+scales: {
+yAxes: [
+  {
+      id: 'y-axis-1',
+      display: true,
+      position: 'left',
+      ticks: {
+          callback: function(value, index, values) {
+              return value;
+          }
+      },
+      scaleLabel:{
+          display: true,
+          labelString: 'Mean Household Income (In USD)',
+          fontColor: "#546372"
+      }
+  }
+],
+xAxes: [
+{
+  scaleLabel:{
+          display: true,
+          labelString: 'Zip Code',
+          fontColor: "#000000"
+      }
+}
+]
+}
+ };
+
+var barChart = new Chart(densityCanvas, {
+  type: 'bar',
+  data: {
+    labels: [{% for info in MeanIncome %}
+                "{{ info.Zip }}",
+                {% endfor %}],
+    datasets: [densityData],
+  },
+  options: chartOptions
+});
+      //# sourceURL=pen.js
+    </script>

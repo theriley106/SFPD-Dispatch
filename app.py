@@ -102,7 +102,9 @@ def genAnalysis():
 	for zipC in interactions.getZipCodes():
 		MHH.append({"Zip": zipC, "MHH": int(zipVal[zipC]["Income"].replace(",", ""))})
 	MHH = sorted(MHH, key=itemgetter('MHH'), reverse=False)
-	return render_template("all.html", responseTimeData=dataset, MeanIncome=MHH)
+	distanceFrom = json.load(open("DATASETS/distance_from.json"))
+	distanceFrom = sorted(distanceFrom, key=itemgetter('Distance'), reverse=False)
+	return render_template("all.html", responseTimeData=dataset, MeanIncome=MHH, DistanceFrom=distanceFrom)
 
 
 if __name__ == "__main__":
