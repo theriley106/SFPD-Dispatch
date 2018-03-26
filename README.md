@@ -35,9 +35,9 @@ Capital One Software Engineering Summit
 
 The web app is hosted using <a href="https://www.heroku.com/">Heroku</a>
 
-The Backend was done using Python's Flask framework, and in an attempt to make everything as modularized as possible almost everything going on in the backend is done using a REST API.
+The Backend was done using Python's Flask framework, and in an attempt to make everything as modularized as possible almost everything is communicated to the front-end using JSON.
 
-I first converted the CSV into a list of python dictionaries to make it a little bit easier to work with.  From there, I created a ton of functions in interactions.py that make it easier to filter data.
+I first converted the CSV into a list of python dictionaries to make it a little bit easier to work with.  From there, I created a ton of functions in interactions.py to make it easier to filter data.
 
 For instance, the most used function in interactions.py was the following:
 
