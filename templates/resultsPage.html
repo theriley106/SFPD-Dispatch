@@ -32,7 +32,7 @@
 <body>
 {% include 'map2.html' %}
 
-<div class="container-fluid">
+<div class="container-fluid" align="center">
 
   <div class="row content">
 
@@ -108,8 +108,8 @@
             var url = "/timeEstimates/" + "{{ DATA.lng }}/{{ DATA.lat }}/" + h + m;
             jsonString = httpGet(url);
             var jsonStr = JSON.parse(jsonString);
-            document.getElementById('PriorityPrediction').innerHTML = jsonStr.Priority;
-            document.getElementById('responsePrediction').innerHTML = jsonStr.ResponseTime;
+            document.getElementById('PriorityPrediction').innerHTML = jsonStr.CallType + " Call";
+            document.getElementById('responsePrediction').innerHTML = "With units arriving in: <br><b>" + jsonStr.ResponseTime + "</b>";
           }
             function httpGet(theUrl)
             // The network request grabs the json containing mp3 structure

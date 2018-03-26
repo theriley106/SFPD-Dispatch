@@ -95,7 +95,11 @@ def genEstimateFromTime(lng, lat, timeVal):
 	estimatedPriority = interactions.ReturnIncidentByLocationAndTime("{}:{}".format(hour, minute), (float(lng), float(lat)), "priority", minRange=180)
 	estimatedResponseTime = interactions.ReturnIncidentByLocationAndTime("{}:{}".format(hour, minute), (float(lng), float(lat)), "responseTime", minRange=180)
 	estimatedResponseTime = interactions.convertSecondsToMinString(int(estimatedResponseTime))
-	return jsonify({"Priority": estimatedPriority, "ResponseTime": estimatedResponseTime})
+	if float(estimatedPriority) > 2.5:
+		callType = "Emergency"
+	else:
+		callType = "Non-Emergency"
+	return jsonify({"CallType": callType, "EstimatedPriority": estimatedPriority, "ResponseTime": estimatedResponseTime})
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0')
