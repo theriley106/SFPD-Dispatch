@@ -12,31 +12,6 @@ app = Flask(__name__, static_url_path="", static_folder="static")
 def index():
 	return render_template("index.html", dataset=interactions.readDataset()[:5])
 
-@app.route('/residential', methods=['GET'])
-def residential():
-	return render_template("residential.html", dataset=interactions.readDataset())
-
-@app.route('/dataset', methods=['GET'])
-def dataset():
-	return jsonify(interactions.readDataset())
-
-@app.route('/Resident', methods=['GET'])
-def resident():
-	return jsonify(interactions.readDataset())
-
-@app.route('/LawEnforcement', methods=['GET'])
-def lawEnforcement():
-	return jsonify(interactions.readDataset())
-
-@app.route('/Government', methods=['GET'])
-def government():
-	return jsonify(interactions.readDataset())
-
-@app.route('/searchAddress', methods=['POST'])
-def searchAddress():
-	address = request.form.get("address")
-	return ""
-
 @app.route('/heatMap', methods=['GET'])
 def getVizz():
 	return render_template("heatMap.html", dataset=interactions.readDataset())
