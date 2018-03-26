@@ -56,6 +56,19 @@ def getDictParamAvgByZip(param):
 		zipResponse[zipCode] = val
 	return zipResponse
 
+def getDistance():
+	zipResponse = []
+	for zipCode in getZipCodes():
+		info = returnParamByZip(zipCode, 'location')
+		allList = []
+		for var in info:
+			lng, lat = var.replace("(", "").replace(")", "").split(", ")
+			allList.append(findNearestFireDepartment((float(lng), float(lat)))["Distance"])
+		val = averageValue(allList, forceSkip=True)
+		print("{} - {}".format(zipCode, val))
+		zipResponse.append({"Zip": zipCode, "Distance": val})
+	return zipResponse
+
 # Average Response Time: 484.6133
 # getAverage("responseTime")
 
@@ -81,3 +94,4 @@ Response time per zip
 '''
 
 
+print getDistance()
