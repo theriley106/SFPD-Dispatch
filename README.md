@@ -45,9 +45,6 @@ Capital One Software Engineering Summit
 
 10. (37.777712440431586, -122.41273670742505) - **32 Reports**
 
-Police departments:
-[u'766 Vallejo Street', u'1251 3rd Street', u'201 Williams Avenue', u'630 Valencia Street', u'1125 Fillmore Street', u'1899 Waller Street', u'461 6th Avenue', u'1 Sgt. John V. Young Lane', u'2345 24th Avenue', u'301 Eddy Street']
-
 Fire Departments:
 
 - 935 Folsom at 5th Street
@@ -97,8 +94,30 @@ Fire Departments:
 - 218 Lincoln Blvd at Keyes Avenue
 
 
-Hospital List:
+Hospitals in San Francisco:
 
-[u'2425 Geary Blvd', u'2425 Geary Blvd', u'1600 Divisadero St', u'1600 Divisadero St', u'3700 California St', u'3700 California St', u'2333 Buchanan St', u'2333 Buchanan St', u'450 Stanyan St', u'450 Stanyan St', u'Castro and Duboce Streets', u'Castro and Duboce Streets', u'505 Parnassus Avenue', u'505 Parnassus Avenue', u'900 Hyde St', u'900 Hyde St', u'1001 Potrero Ave', u'1001 Potrero Ave', u'3555 Cesar Chavez', u'3555 Cesar Chavez', u'845 Jackson St', u'845 Jackson St', u'1200 El Camino Real', u'1200 El Camino Real', u'350 Hawthorne Ave']
-
-#
+- 2425 Geary Blvd
+- 2425 Geary Blvd
+- 1600 Divisadero St
+- 1600 Divisadero St
+- 3700 California St
+- 3700 California St
+- 2333 Buchanan St
+- 2333 Buchanan St
+- 450 Stanyan St
+- 450 Stanyan St
+- Castro and Duboce Streets
+- Castro and Duboce Streets
+- 505 Parnassus Avenue
+- 505 Parnassus Avenue
+- 900 Hyde St
+- 900 Hyde St
+- 1001 Potrero Ave
+- 1001 Potrero Ave
+- 3555 Cesar Chavez
+- 3555 Cesar Chavez
+- 845 Jackson St
+- 845 Jackson St
+- 1200 El Camino Real
+- 1200 El Camino Real
+- 350 Hawthorne Ave
