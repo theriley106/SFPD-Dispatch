@@ -1,5 +1,5 @@
 # SFPD-Dispatch
-Capital One Software Engineering Summit
+San Francisco Police Department Analytics for the Capital One Software Engineering Summit
 
 <h1 align="center"><a href="http://sfpd-data.herokuapp.com/">SFPD Data Analytics Heroku Web App</a></h1>
 
