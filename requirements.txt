@@ -1,3 +1,4 @@
 Flask==0.12.1
 gunicorn==19.7.1
 humanfriendly==4.8
+geopy==1.11.0
