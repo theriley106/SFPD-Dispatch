@@ -1,9 +1,19 @@
 from flask import Flask, request, render_template, request, url_for, redirect, Markup, Response, send_file, send_from_directory, make_response, jsonify
+# Flask for backend
 import interactions
+# This is the PRIMARY file that contains almost all functions used in the app
 import json
+# For interacting with the datasets
 import ast
+# This is for converting a string into a python dict
 from operator import itemgetter
 # This is for sorting the list of instances
+
+'''
+interactions.py contains almost all of the functions
+used in the webapp, and it has a lot more comments
+explaning what's going on in the backend
+'''
 
 app = Flask(__name__, static_url_path="", static_folder="static")
 
@@ -22,7 +32,9 @@ def getHeatMap():
 
 @app.route("/getInstanceByLongLat/<lng>/<lat>")
 def getInstanceLngLat(lng, lat):
+	# Returns instances near a specific lat long
 	instances = interactions.incidentsNearLatLng((float(lng), float(lat)), radius=.1)
+
 	noDup = interactions.removeDuplicateLocations(instances)
 	# This grabs the location to tell if more than 1 call has taken place at this location
 	print len(noDup)
