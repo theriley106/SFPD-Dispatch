@@ -4,13 +4,16 @@ Capital One Software Engineering Summit
 <h1 align="center"><a href="http://sfpd-data.herokuapp.com/">SFPD Data Analytics Heroku Web App</a></h1>
 
 
-### SampleAddresses
+### Sample Addresses
 
-101 Post Street San Francisco, CA 94108 - Capital One Cafe in Union Square
+101 Post Street San Francisco, CA 94108 - **Capital One Cafe in Union Square**
 
-<b>3407, 500 Haight St, San Francisco, CA 94117</b> - <a href="http://www.wonderlandsanfrancisco.com/menu.aspx">Wonderland</a> - Literally the best <i>vegan</i> restaraunt in SF
+420 Montgomery Street San Francisco, CA 94104 - **Capital One Residential Bank**
 
-<b>1177 California St, San Francisco, CA 94108</b> - <a href="http://ossosteakhouse.com">Osso Steakhouse</a> - Literally the worst <i>vegan</i> restaraunt in SF
+2603 Camino RamonSan Ramon, CA 94583 - **Capital One Residential Bank**
+
+999 Van Ness Ave, San Francisco, CA 94109 - <b>The <i>second</i> coolest Tesla Showroom in Northern California...</b>
+
 
 29.07% Of calls are to unique locations
 
