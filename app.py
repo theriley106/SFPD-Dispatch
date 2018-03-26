@@ -94,6 +94,7 @@ def genEstimateFromTime(lng, lat, timeVal):
 	#return interactions.ReturnIncidentByLocationAndTime("12:15", (float(lng), float(lat)), "priority", minRange=120)
 	estimatedPriority = interactions.ReturnIncidentByLocationAndTime("{}:{}".format(hour, minute), (float(lng), float(lat)), "priority", minRange=180)
 	estimatedResponseTime = interactions.ReturnIncidentByLocationAndTime("{}:{}".format(hour, minute), (float(lng), float(lat)), "responseTime", minRange=180)
+	estimatedResponseTime = interactions.convertSecondsToMinString(int(estimatedResponseTime))
 	return jsonify({"Priority": estimatedPriority, "ResponseTime": estimatedResponseTime})
 
 if __name__ == "__main__":
