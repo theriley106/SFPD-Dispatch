@@ -33,7 +33,60 @@ Capital One Software Engineering Summit
 
 ### About the Web App
 
-The web app is hosted using <a href"https://www.heroku.com/">Heroku</a>
+The web app is hosted using <a href"https://www.heroku.com/">Heroku</a>.
+
+The Backend was done using Python's Flask framework, and in an attempt to make everything as modularized as possible almost everything going on in the backend is done using a REST API.
+
+I first converted the CSV into a list of python dictionaries to make it a little bit easier to work with.  From there, I created a ton of functions in interactions.py that make it easier to filter data.
+
+For instance, the most used function in interactions.py was the following:
+
+```python
+def incidentsNearLatLng(point, radius):
+	# Returns a list of instances within radius of a long lat point
+	dataset = readDataset()
+	# Reads the dataset
+	values = copy.copy(dataset)
+	# This copies that dataset list so nothing is does to this array
+	for var in values:
+		# Goes through all values in the dataset
+		if not checkInRadius((float(var["latitude"]), float(var["longitude"])), point, radius):
+			# Checks to see if the value is within the radius
+			dataset.remove(var)
+			# Removes the value
+	return dataset
+	# Returns a list of python dictionaries
+```
+
+And I used something called the Haversine equation to calculate distances between two long/lat points.  This allowed me to filter out incidents to only show ones that happened nearby.
+
+The data visualization is broken up into 4 parts:
+
+### #1
+
+[![N|Solid](static/pt1.png)](#)
+<p align="center">Primary Visualization that allows the user to navigate through a map of San Francisco.  Address autocomplete has been implemented using Google's Javascript Map API</p>
+
+[![N|Solid](static/pt21.png)](#)
+<p align="center">The user can input an address in San Francisco and the map will move over to center that address's Long/Lat coordinates</p>
+
+[![N|Solid](static/nearByPoints.png)](#)
+<p align="center">You can click nearby point to learn details about incidents that have happened nearby</p>
+
+### #2
+
+[![N|Solid](static/example.png)](#)
+<p align="center">After the user clicks "View Full Report" the web app will open another window showing details surrounding that Long/Lat coordinate</p>
+
+[![N|Solid](static/boxWithNoInfo.png)](#)
+<p align="center">This coordinate is <b>NOT</b> a coordinate that's in the Dataset, so it uses nearby instances to make predictions about call priority and response time</p>
+
+[![N|Solid](static/inputTime.png)](#)
+<p align="center">The user can input a time and the web app will make a prediction about the type of call and response time</p>
+
+[![N|Solid](static/boxWithInfo.png)](#)
+<p align="center">The predictions are made using nearby instances</p>
+
 
 ## Most Active Police Destinations
 
