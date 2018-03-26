@@ -209,7 +209,7 @@ def checkInRadius(point1, point2, radius):
 	# This will return if a point is within a certain radius
 	return (haversine(point1, point2, miles=True) < radius)
 
-def returnHousholdIncome(zipCode):
+def returnHousholdIncome():
 	# Returns mean household income and population for a zip code
 	householdInfo = {}
 	for row in csvToList(UMICH_DATASET_FILE)[1:]:

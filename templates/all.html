@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>San Francisco Data Analysis</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 550px;}
+    /* Set gray background color and 100% height */
+    .sidenav {
+    	right: 5px;
+    	top: 35px;
+      height: 400px;
+      width: 420px;
+    }
+    body {background-color: #b5b6b7}
+
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;}
+    }
+  </style>
+
+
+
+
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+
+      {% include 'zipResponseViz.html' %}
+      <br>
+      <br>
+    {% include 'untitled.html' %}
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
+

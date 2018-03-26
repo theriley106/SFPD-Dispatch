@@ -2,6 +2,8 @@ from flask import Flask, request, render_template, request, url_for, redirect, M
 import interactions
 import json
 import ast
+from operator import itemgetter
+# This is for sorting the list of instances
 
 app = Flask(__name__, static_url_path="", static_folder="static")
 
@@ -34,11 +36,6 @@ def government():
 def searchAddress():
 	address = request.form.get("address")
 	return ""
-
-@app.route('/responseTimeViz', methods=['GET'])
-def getViz():
-	dataset = interactions.ResponseByZipAsLod()
-	return render_template("zipResponseViz.html", responseTimeData=dataset)
 
 @app.route('/otherViz', methods=['GET'])
 def getVizz():
@@ -96,6 +93,17 @@ def genEstimateFromTime(lng, lat, timeVal):
 	else:
 		callType = "Non-Emergency"
 	return jsonify({"CallType": callType, "EstimatedPriority": estimatedPriority, "ResponseTime": estimatedResponseTime})
+
+@app.route("/all")
+def genAnalysis():
+	MHH = []
+	dataset = interactions.ResponseByZipAsLod()
+	zipVal = interactions.returnHousholdIncome()
+	for zipC in interactions.getZipCodes():
+		MHH.append({"Zip": zipC, "MHH": int(zipVal[zipC]["Income"].replace(",", ""))})
+	MHH = sorted(MHH, key=itemgetter('MHH'), reverse=False)
+	return render_template("all.html", responseTimeData=dataset, MeanIncome=MHH)
+
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0')

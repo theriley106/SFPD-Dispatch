@@ -3,7 +3,7 @@
   <meta charset="UTF-8">
   <link rel="shortcut icon" type="image/x-icon" href="https://production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico">
   <link rel="mask-icon" type="" href="https://production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111">
-  <title>Average Response Time By Zip</title>
+  <title>Mean Household Income By Zip Code</title>
 
   <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Lato">
 
@@ -32,29 +32,29 @@
   width:200px;
 }
 </style>
-  <canvas id="densityChart" width="583" height="258" style="width: 583px; height: 258px;"></canvas>
+  <canvas id="densityChartz" width="583" height="258" style="width: 583px; height: 258px;"></canvas>
     <script>
-      var densityCanvas = document.getElementById("densityChart");
+      var densityCanvas = document.getElementById("densityChartz");
 
 Chart.defaults.global.defaultFontFamily = "Lato";
 Chart.defaults.global.defaultFontSize = 18;
 
 var densityData = {
-  label: 'Average Response Time (In Seconds)',
-  data: [{% for info in responseTimeData %}
-                {{ info.Response }},
+  label: 'Mean Household Income (In USD)',
+  data: [{% for info in MeanIncome %}
+                {{ info.MHH }},
                 {% endfor %}],
   backgroundColor: [
-  {% for info in responseTimeData %}
+  {% for info in MeanIncome %}
 
-    'rgba(0, 99, 132, 0.6)',
+    'rgb(157, 247, 214)',
                 {% endfor %}
   ],
   borderColor: [
 
-    {% for info in responseTimeData %}
+    {% for info in MeanIncome %}
 
-    'rgba(0, 99, 132, 1)',
+    'rgb(157, 247, 214)',
                 {% endfor %}
   ],
   borderWidth: 2,
@@ -75,7 +75,7 @@ yAxes: [
       },
       scaleLabel:{
           display: true,
-          labelString: 'Response Time (In Seconds)',
+          labelString: 'Mean Household Income (In USD)',
           fontColor: "#546372"
       }
   }
@@ -95,7 +95,7 @@ xAxes: [
 var barChart = new Chart(densityCanvas, {
   type: 'bar',
   data: {
-    labels: [{% for info in responseTimeData %}
+    labels: [{% for info in MeanIncome %}
                 "{{ info.Zip }}",
                 {% endfor %}],
     datasets: [densityData],
