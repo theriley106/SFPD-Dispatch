@@ -33,7 +33,7 @@ Capital One Software Engineering Summit
 
 ### About the Web App
 
-The web app is hosted using <a href"https://www.heroku.com/">Heroku</a>.
+The web app is hosted using <a href="https://www.heroku.com/">Heroku</a>
 
 The Backend was done using Python's Flask framework, and in an attempt to make everything as modularized as possible almost everything going on in the backend is done using a REST API.
 
