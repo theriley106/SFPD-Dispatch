@@ -38,8 +38,21 @@
 
     <div class="col-sm-3 sidenav hidden-xs">
 
-
-		Testing
+    <br>
+    <br>
+    <br>
+    <br>
+		<a href="/"><button class="btn btn-default btn-lg flipthis-highlight" type="button">Return To Map</button></a>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button class="btn btn-default btn-lg flipthis-highlight" type="button">View San Francisco Stats</button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="https://github.com/theriley106/SFPD-Dispatch"><button class="btn btn-default btn-lg flipthis-highlight" type="button">View Github</button></a>
 
 
     </div>
@@ -48,7 +61,7 @@
     <div class="col-sm-9">
       <div class="well">
       <center>
-        <h2>testing</h2>
+        <h2>{{ DATA.address }}</h2>
         <h3>{{ DATA.lng }}, {{ DATA.lat }}</h3>
         </center>
       </div>
@@ -88,7 +101,7 @@
           <center>
             <p><b>Estimated Response Time</b></p>
             <h3><b>{{ DATA.averageResponseTime }} seconds</b></h3>
-            <p>Based on {{ DATA.nearby }} calls in a 0.1 Mile radius</p>
+            <p>Based on {{ DATA.nearby }} calls in a 0.5 Mile radius</p>
           </div>
           </center>
         </div>

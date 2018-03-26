@@ -68,20 +68,16 @@ def getInstanceLngLat(lng, lat):
 
 @app.route("/genPopUp/<lng>/<lat>")
 def getInstanceInfo(lng, lat):
-	data = {"lng": lng, "lat": lat}
-	#return render_template("popUp.html", DATA=data)
-	return jsonify(interactions.findNearestHospital((float(lng), float(lat))))
 	try:
-		data = interactions.genInfoFromLatLng(lat, lng)
-		return jsonify(data)
+		data = interactions.genInfoFromLatLng(lat, lng, radius=.5)
 	except:
-		return "<center><h1><b>No Incidents found near this location</b></h1></center>"
-
+		return "<center><h1><b>Not enough incidents found near this location</b></h1></center><center><p>Please input another address</p></center>"
+	return render_template("popUp.html", DATA=data)
 
 @app.route("/genFullReport/<lng>/<lat>")
 def getFullReport(lng, lat):
 	data = {"lng": lng, "lat": lat}
-	return render_template("resultsPage.html", DATA=interactions.genInfoFromLatLng(lng, lat))
+	return render_template("resultsPage.html", DATA=interactions.genInfoFromLatLng(lng, lat, radius=.5))
 
 @app.route("/test")
 def genTime():

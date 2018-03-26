@@ -234,6 +234,15 @@ def addressToCoord(address):
 	return (coords.latitude, coords.longitude)
 	# Returns lat long as a float
 
+def coordToAddress(point):
+	# Returns address for long lat
+	geolocator = GoogleV3(api_key='AIzaSyDBZre20-q9hSY0BFXTqmiZr5-orJSuwr0')
+	# ^ Yes, I know this isn't a good idea :P
+	coords = geolocator.reverse(list(point), exactly_one=True)
+	# Coords is a class that contains a ton of info about the address
+	return coords.address
+	# Returns address as a string
+
 def incidentsNearLatLng(point, radius):
 	# Returns a list of instances within radius of a long lat point
 	dataset = readDataset()
@@ -527,7 +536,7 @@ def returnIncidentsByTime(timestamp, parameter="received_timestamp", minRange=15
 	return returnValues
 	# Return type is a List of dict values
 
-def ReturnIncidentByLocationAndTime(timestamp, point, param, minRange=30, radius=.3):
+def ReturnIncidentByLocationAndTime(timestamp, point, param, minRange=30, radius=.5):
 	# Returns incidents during a time period within a certain radius
 	incidentList = incidentsNearLatLng(point, radius)
 	# Gets all instances near a certain long lat
@@ -561,6 +570,8 @@ def genInfoFromLatLng(lat, lng, radius=.1):
 	# Generates a brief amount of into from longitude and latitude
 	data = {"lng": lng, "lat": lat}
 	# Data is the python dict that will hold all the data
+	data["address"] = coordToAddress((lng, lat))
+	# This generates a string containing the address for these long lat points
 	nearbyInstances = incidentsNearLatLng((float(lng), float(lat)), radius=radius)
 	# Instances that have taken place nearby
 	data['nearby'] = len(nearbyInstances)
