@@ -107,8 +107,9 @@
             var [h,m] = t.split(":");
             var url = "/timeEstimates/" + "{{ DATA.lng }}/{{ DATA.lat }}/" + h + m;
             jsonString = httpGet(url);
-            console.log(jsonString);
-            document.getElementById('responsePrediction').innerHTML = jsonString;
+            var jsonStr = JSON.parse(jsonString);
+            document.getElementById('PriorityPrediction').innerHTML = jsonStr.Priority;
+            document.getElementById('responsePrediction').innerHTML = jsonStr.ResponseTime;
           }
             function httpGet(theUrl)
             // The network request grabs the json containing mp3 structure

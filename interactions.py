@@ -651,6 +651,9 @@ def findNearestHospital(point):
 	return nearestDepartment
 	# Returns a dictionary containing the distance and address of the nearest hospital
 
+def convertSecondsToMinString(seconds):
+	# This converts a float containing seconds into a string containing minutes
+
 
 
 # returnListOfParam((returnIncidentsByParam("zipcode_of_incident", 94108)), "available_timestamp")
